@@ -1,0 +1,238 @@
+{
+  "__guid": "bc26a615-1071-48be-9814-3aa00323743d",
+  "GameObjects": [
+    {
+      "__guid": "59ff0fef-fbba-4ad5-a392-857954dc28eb",
+      "Name": "Main Camera",
+      "Position": "0.005342074,1190.262,1275.368",
+      "Rotation": "0.2705981,0.2705981,-0.6532816,0.6532817",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "CameraComponent",
+          "__guid": "cbf30378-c22c-4923-b58d-0df73b0b8406",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        },
+        {
+          "__type": "FollowCamera",
+          "__guid": "68bc07f7-2bab-4ea8-b462-efcdfe2d650c",
+          "Target": {
+            "_type": "gameobject",
+            "go": "40907fe7-6b22-4e97-8f60-3ac626f589f3"
+          }
+        }
+      ]
+    },
+    {
+      "__guid": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
+      "Name": "Plane",
+      "Scale": "100,100,1",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "145e186b-36e1-438a-a7fa-bf3d770fd726",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/water/water_temp.vmat",
+          "Model": "models/dev/plane.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "d1d8ce74-d963-47f0-b13d-a3c7290b5620",
+      "Name": "Directional Light",
+      "Position": "0,0,200",
+      "Rotation": "-0.2056157,0.4964,0.3227519,0.7791921",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "DirectionalLight",
+          "__guid": "2518b007-71c3-4ef3-b2b0-1195ab48be82",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0.05882,0.07451,0.08235,1"
+        }
+      ]
+    },
+    {
+      "__guid": "3c098818-9b67-45bd-960a-ac4a6f6e60e3",
+      "Name": "World",
+      "Position": "-518.4078,244.2228,222.6223",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Wind",
+          "__guid": "1fd66166-e948-4b4e-af4b-bbd88ab4d909"
+        }
+      ]
+    },
+    {
+      "__guid": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
+      "Name": "Root (Pivot)",
+      "Position": "0,0,39.15729",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Rigidbody",
+          "__guid": "acc57957-6f3a-4c1c-ab23-2011a2444830",
+          "AngularDamping": 0.3,
+          "Gravity": false,
+          "LinearDamping": 1,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "40907fe7-6b22-4e97-8f60-3ac626f589f3",
+          "Name": "Ship",
+          "Position": "87.60568,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "SkinnedModelRenderer",
+              "__guid": "8aaecf49-2cf8-4fc9-a3ca-53d876f5d1a4",
+              "BodyGroups": 18446744073709551615,
+              "CreateBoneObjects": false,
+              "Model": "models/pirate_ship/pirate_ship.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ShipController",
+              "__guid": "aa3e82ed-4f15-4b5e-8919-c241bbafedbc",
+              "Rigidbody": {
+                "_type": "component",
+                "component_id": "acc57957-6f3a-4c1c-ab23-2011a2444830",
+                "go": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
+                "component_type": "Rigidbody"
+              },
+              "ShipSpeed": 80,
+              "TurningSpeed": 2,
+              "Wind": {
+                "_type": "component",
+                "component_id": "1fd66166-e948-4b4e-af4b-bbd88ab4d909",
+                "go": "3c098818-9b67-45bd-960a-ac4a6f6e60e3",
+                "component_type": "Wind"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "23c2e3b3-957e-475b-b953-84f72eeeeb1c",
+          "Name": "UI",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "ScreenPanel",
+              "__guid": "094a584c-0fee-4799-9ee7-e9f9c2eaa070",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "ShipVitals",
+              "__guid": "76c378a9-36e1-40d1-ad88-c58ae4366efd",
+              "Ship": {
+                "_type": "component",
+                "component_id": "aa3e82ed-4f15-4b5e-8919-c241bbafedbc",
+                "go": "40907fe7-6b22-4e97-8f60-3ac626f589f3",
+                "component_type": "ShipController"
+              }
+            },
+            {
+              "__type": "ShipController",
+              "__guid": "5d60c6b7-1078-45df-9072-fcc856f038ea",
+              "Rigidbody": {
+                "_type": "component",
+                "component_id": "ea9e8702-57b7-420c-b119-61a413acbce2",
+                "go": "23c2e3b3-957e-475b-b953-84f72eeeeb1c",
+                "component_type": "Rigidbody"
+              },
+              "ShipSpeed": 20,
+              "TurningSpeed": 3,
+              "Wind": {
+                "_type": "component",
+                "component_id": "fbd81159-167e-4788-8f5b-6b95ae1326c8",
+                "go": "23c2e3b3-957e-475b-b953-84f72eeeeb1c",
+                "component_type": "Wind"
+              }
+            },
+            {
+              "__type": "Rigidbody",
+              "__guid": "ea9e8702-57b7-420c-b119-61a413acbce2",
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            },
+            {
+              "__type": "Wind",
+              "__guid": "fbd81159-167e-4788-8f5b-6b95ae1326c8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "default",
+  "Description": "",
+  "LastSaved": "2024-03-20T16:27:46.0867365-03:00",
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

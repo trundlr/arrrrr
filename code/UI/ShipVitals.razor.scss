@@ -1,0 +1,46 @@
+﻿$bg-dark: #182229;
+$font-light: #f5f8fe;
+
+ShipVitals {
+    align-self: flex-end;
+    bottom: 80px;
+    left: 120px;
+    font-family: Overlock;
+    flex-direction: column;
+    gap: 12px;
+
+    .speed {
+        background-color: $bg-dark;
+        color: $font-light;
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 48px;
+        font-weight: bold;
+        width: 160px;
+        justify-content: center;
+
+        > .units {
+            font-size: 24px;
+            left: 2px;
+            bottom: 4px;
+            align-self: flex-end;
+        }
+    }
+
+    .anchored {
+        background-color: $bg-dark;
+        color: $font-light;
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 24px;
+        font-weight: bold;
+        width: 160px;
+        justify-content: center;
+        transform: translateY(200px);
+        transition: transform 0.15s ease-in;
+
+        &.show {
+            transform: translateY(0px);
+        }
+    }
+}

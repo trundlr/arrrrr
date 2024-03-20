@@ -1,0 +1,23 @@
+﻿@namespace Pirate.UI
+@using System
+@using Pirate.Ship
+@inherits PanelComponent
+
+<root>
+    <div class="speed">
+        <span>@Speed</span> <span class="units">u/s</span>
+    </div>
+    <div class="anchored @(Ship.AnchorDropped ? "show" : "")">Anchored</div>
+</root>
+
+@code
+{
+    [Property, RequireComponent] public required ShipController Ship { get; set; }
+
+    private string Speed => $"{Ship.Rigidbody.Velocity.Length:F0}";
+
+    protected override int BuildHash()
+    {
+        return HashCode.Combine(Ship.Rigidbody.Velocity.Length);
+    }
+}
