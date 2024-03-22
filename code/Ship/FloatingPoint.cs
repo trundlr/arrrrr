@@ -4,12 +4,9 @@ public sealed class FloatingPoint : Component
 {
 	[Property] public required Rigidbody Rigidbody { get; set; }
 	[Property] public required Waves Waves { get; set; }
-
-	[Property] public float DepthBeforeSubmerged { get; set; } = 1f;
-	[Property] public float DisplacementAmount { get; set; } = 3f;
-	[Property] public int FloatSources { get; set; } = 1;
-
+	[Property] public float DensityModifier { get; set; } = 1f;
 	[Property] public int SamplePoints { get; set; }
+	[Property] public bool DrawSamplingDebug { get; set; } = false;
 
 	private Vector3[]? RandomPoints { get; set; }
 
@@ -52,8 +49,8 @@ public sealed class FloatingPoint : Component
 
 		var massSubmerged = (float)submergedPoints.Count / RandomPoints.Length;
 
-		Rigidbody.ApplyForce( // Rigidbody.PhysicsBody.MassCenter,
-			-Scene.PhysicsWorld.Gravity * Rigidbody.PhysicsBody.Mass * massSubmerged * 10f );
+		Rigidbody.ApplyForceAt( Rigidbody.PhysicsBody.MassCenter,
+			-Scene.PhysicsWorld.Gravity * Rigidbody.PhysicsBody.Mass * massSubmerged * 10f * (1f / DensityModifier) );
 	}
 
 	protected override void DrawGizmos()
@@ -66,36 +63,19 @@ public sealed class FloatingPoint : Component
 		Gizmo.Draw.Color = Color.Yellow;
 		Gizmo.Draw.LineBBox( Rigidbody.PhysicsBody.GetBounds() );
 
-		// Gizmo.Transform = Transform.Local;
-		//
-		// if ( RandomPoints is not null )
-		// {
-		// 	for ( var i = 0; i < RandomPoints.Length; i++ )
-		// 	{
-		// 		var point = Transform.World.PointToWorld( RandomPoints[i] );
-		// 		Gizmo.Draw.Color = point.z < 0 ? Color.Green : Color.Red;
-		// 		Gizmo.Draw.LineSphere( RandomPoints[i], 4f );
-		// 	}
-		// }
+		if ( DrawSamplingDebug )
+		{
+			Gizmo.Transform = Transform.Local;
+
+			if ( RandomPoints is not null )
+			{
+				for ( var i = 0; i < RandomPoints.Length; i++ )
+				{
+					var point = Transform.World.PointToWorld( RandomPoints[i] );
+					Gizmo.Draw.Color = point.z < 0 ? Color.Green : Color.Red;
+					Gizmo.Draw.LineSphere( RandomPoints[i], 2f );
+				}
+			}
+		}
 	}
 }
-
-// Log.Info( bounds );
-// Apply gravity
-
-// if ( Transform.Position.z < 0f )
-// 	Rigidbody.ApplyForceAt( Transform.Position,
-// 		-Scene.PhysicsWorld.Gravity * Rigidbody.PhysicsBody.Mass / FloatSources * 10f );
-
-// Rigidbody.ApplyForceAt( Transform.Position,
-// 	Scene.PhysicsWorld.Gravity * Rigidbody.PhysicsBody.Mass / FloatSources );
-// var waveHeight = Waves.GetWaveHeight( Transform.Position.x );
-// if ( Transform.Position.z < waveHeight )
-// {
-// 	var displacementMult =
-// 		((waveHeight - Transform.Position.z) / DepthBeforeSubmerged).Clamp( 0f, 1f ) * DisplacementAmount;
-// 	Log.Info( displacementMult );
-// 	Rigidbody.ApplyForceAt( Transform.Position,
-// 		new Vector3( 0f, 0f, -Scene.PhysicsWorld.Gravity.z * displacementMult ) * Rigidbody.PhysicsBody.Mass /
-// 		FloatSources );
-// }

@@ -38,7 +38,7 @@
     },
     {
       "__guid": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
-      "Name": "Plane",
+      "Name": "Water",
       "Position": "0,0,-2.564457",
       "Scale": "100,100,1",
       "Enabled": true,
@@ -142,7 +142,7 @@
                 "component_type": "Rigidbody"
               },
               "ShipSpeed": 80,
-              "TurningSpeed": 2,
+              "TurningSpeed": 3,
               "Wind": {
                 "_type": "component",
                 "component_id": "1fd66166-e948-4b4e-af4b-bbd88ab4d909",
@@ -160,9 +160,8 @@
             {
               "__type": "FloatingPoint",
               "__guid": "fb0c2b2e-1dc3-4801-9a9a-9e2407b1d2ab",
-              "DepthBeforeSubmerged": 1,
-              "DisplacementAmount": 3,
-              "FloatSources": 1,
+              "DensityModifier": 1,
+              "DrawSamplingDebug": false,
               "Rigidbody": {
                 "_type": "component",
                 "component_id": "acc57957-6f3a-4c1c-ab23-2011a2444830",
@@ -207,118 +206,6 @@
           ]
         },
         {
-          "__guid": "cd39c524-b940-47dc-ae2f-ac46285b1a65",
-          "Name": "Floating Point",
-          "Position": "116.6425,56,28.99533",
-          "NetworkMode": 2,
-          "Components": [
-            {
-              "__type": "FloatingPoint",
-              "__guid": "4d0b80ca-fbdb-4688-b09b-f67d9e7c1e94",
-              "DepthBeforeSubmerged": 1,
-              "DisplacementAmount": 3,
-              "FloatSources": 4,
-              "Rigidbody": {
-                "_type": "component",
-                "component_id": "acc57957-6f3a-4c1c-ab23-2011a2444830",
-                "go": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
-                "component_type": "Rigidbody"
-              },
-              "SamplePoints": 0,
-              "Waves": {
-                "_type": "component",
-                "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
-                "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
-                "component_type": "Waves"
-              }
-            }
-          ]
-        },
-        {
-          "__guid": "51211272-9841-46a2-9209-60d122638da0",
-          "Name": "Floating Point",
-          "Position": "116.6425,-56,28.99533",
-          "NetworkMode": 2,
-          "Components": [
-            {
-              "__type": "FloatingPoint",
-              "__guid": "28abba65-9560-4c60-8593-b5c12d3af6d3",
-              "DepthBeforeSubmerged": 1,
-              "DisplacementAmount": 3,
-              "FloatSources": 4,
-              "Rigidbody": {
-                "_type": "component",
-                "component_id": "acc57957-6f3a-4c1c-ab23-2011a2444830",
-                "go": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
-                "component_type": "Rigidbody"
-              },
-              "SamplePoints": 0,
-              "Waves": {
-                "_type": "component",
-                "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
-                "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
-                "component_type": "Waves"
-              }
-            }
-          ]
-        },
-        {
-          "__guid": "fe732086-e97a-4aa6-96e9-12c4026f1b8a",
-          "Name": "Floating Point",
-          "Position": "-88.31902,-56,28.99533",
-          "NetworkMode": 2,
-          "Components": [
-            {
-              "__type": "FloatingPoint",
-              "__guid": "98a2ae13-90ab-46e7-99b3-89e65c785702",
-              "DepthBeforeSubmerged": 1,
-              "DisplacementAmount": 3,
-              "FloatSources": 4,
-              "Rigidbody": {
-                "_type": "component",
-                "component_id": "acc57957-6f3a-4c1c-ab23-2011a2444830",
-                "go": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
-                "component_type": "Rigidbody"
-              },
-              "SamplePoints": 0,
-              "Waves": {
-                "_type": "component",
-                "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
-                "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
-                "component_type": "Waves"
-              }
-            }
-          ]
-        },
-        {
-          "__guid": "00375529-b697-4f46-90b2-0c76f5cb51ab",
-          "Name": "Floating Point",
-          "Position": "-88.31902,56,28.99533",
-          "NetworkMode": 2,
-          "Components": [
-            {
-              "__type": "FloatingPoint",
-              "__guid": "d11c5517-faa6-4bf1-8be8-3a1c09e2cb80",
-              "DepthBeforeSubmerged": 1,
-              "DisplacementAmount": 3,
-              "FloatSources": 4,
-              "Rigidbody": {
-                "_type": "component",
-                "component_id": "acc57957-6f3a-4c1c-ab23-2011a2444830",
-                "go": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
-                "component_type": "Rigidbody"
-              },
-              "SamplePoints": 0,
-              "Waves": {
-                "_type": "component",
-                "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
-                "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
-                "component_type": "Waves"
-              }
-            }
-          ]
-        },
-        {
           "__guid": "59d5cee6-ef98-4f7b-91b6-b94ea700c3b1",
           "Name": "Camera Target",
           "Position": "115.2232,0,98.62769",
@@ -353,44 +240,32 @@
       ]
     },
     {
-      "__guid": "0c179a4d-3928-49d5-a6b3-65a5dd296e35",
+      "__guid": "ef3d748e-e819-4845-9bbe-13f9bcdaf843",
       "Name": "Cube",
-      "Position": "-58.33266,613.6392,205.1264",
+      "Position": "-215.2769,635.87,587.9447",
+      "Enabled": true,
       "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
-          "__guid": "c38b3f05-89d8-4f92-ad0d-dd3148141a43",
+          "__guid": "5e4f5e1c-6a14-478d-b0d2-6f58873b75e9",
           "BodyGroups": 18446744073709551615,
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
         },
         {
-          "__type": "Rigidbody",
-          "__guid": "221af2a5-9a54-4fb0-b409-4a49734b181d",
-          "AngularDamping": 0.05,
-          "Gravity": true,
-          "LinearDamping": 0.01,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        },
-        {
           "__type": "FloatingPoint",
-          "__guid": "b28f8c3c-281d-493e-9623-ae80c3cf103c",
-          "DepthBeforeSubmerged": 1,
-          "DisplacementAmount": 1.5,
-          "FloatSources": 1,
+          "__guid": "1789de4a-6227-4e4a-885e-3796b87896b7",
+          "DensityModifier": 3,
+          "DrawSamplingDebug": true,
           "Rigidbody": {
             "_type": "component",
-            "component_id": "221af2a5-9a54-4fb0-b409-4a49734b181d",
-            "go": "0c179a4d-3928-49d5-a6b3-65a5dd296e35",
+            "component_id": "f1597ee8-90e1-4e95-9b91-cd2cc1349c9e",
+            "go": "ef3d748e-e819-4845-9bbe-13f9bcdaf843",
             "component_type": "Rigidbody"
           },
-          "SamplePoints": 0,
+          "SamplePoints": 500,
           "Waves": {
             "_type": "component",
             "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
@@ -399,8 +274,20 @@
           }
         },
         {
+          "__type": "Rigidbody",
+          "__guid": "f1597ee8-90e1-4e95-9b91-cd2cc1349c9e",
+          "AngularDamping": 0.3,
+          "Gravity": true,
+          "LinearDamping": 0.3,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
           "__type": "BoxCollider",
-          "__guid": "7b87781e-ca6c-49e6-b604-24b75d0d3850",
+          "__guid": "42969a27-2a1a-4257-ab67-f4efce063f77",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
@@ -409,79 +296,157 @@
       ]
     },
     {
-      "__guid": "71cb66be-57cc-404a-8c95-9f86df3fd813",
-      "Name": "Ship",
-      "Position": "0,0,122.7186",
+      "__guid": "30b84981-6347-417e-86b3-f701dd692750",
+      "Name": "Town",
+      "Position": "-751.0757,173.7792,3.701256",
+      "Scale": "1,0.9790472,1",
+      "Enabled": true,
       "NetworkMode": 2,
       "Components": [
         {
-          "__type": "SkinnedModelRenderer",
-          "__guid": "cfa2be70-73f1-45a7-a3c1-2c8c77ec95ea",
-          "BodyGroups": 18446744073709551615,
-          "CreateBoneObjects": false,
-          "Model": "models/pirate_ship/pirate_ship.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
+          "__type": "Town",
+          "__guid": "75f7fddc-b132-42c7-b9b0-7be4c585127a",
+          "BasePopulation": 158,
+          "FishTradePrice": 4,
+          "TownName": "Dicksburg",
+          "VisitRadius": 196
         },
         {
-          "__type": "ShipController",
-          "__guid": "be1317d0-d12f-4e6a-a874-5d1035446fc4",
-          "__enabled": false,
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "be31c7fe-978c-4f50-a54e-bfab8e024c78",
-            "go": "71cb66be-57cc-404a-8c95-9f86df3fd813",
-            "component_type": "Rigidbody"
-          },
-          "ShipSpeed": 80,
-          "TurningSpeed": 2,
-          "Wind": {
-            "_type": "component",
-            "component_id": "1fd66166-e948-4b4e-af4b-bbd88ab4d909",
-            "go": "3c098818-9b67-45bd-960a-ac4a6f6e60e3",
-            "component_type": "Wind"
-          }
-        },
-        {
-          "__type": "ModelCollider",
-          "__guid": "3f3af654-bc7c-4bda-9360-689630a2c337",
-          "IsTrigger": false,
-          "Model": "models/pirate_ship/pirate_ship.vmdl",
+          "__type": "SphereCollider",
+          "__guid": "c0dd6600-8e00-4e95-a22b-b436305571ed",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Radius": 196,
           "Static": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "9bb95a4e-795c-4251-9350-50643b181eca",
+          "Name": "Buildings",
+          "Position": "53.02179,46.05348,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Children": [
+            {
+              "__guid": "c142f37b-b211-46f5-9f5f-1d0851e88f40",
+              "Name": "Cube",
+              "Position": "0,0,0",
+              "Scale": "3.288293,0.697138,0.2460395",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "Components": [
+                {
+                  "__type": "ModelRenderer",
+                  "__guid": "89e17d1c-a7df-43f9-8377-f6465210a53e",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/dev/box.vmdl",
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "e88728f4-c3ad-45e3-b097-611039cb0783",
+              "Name": "Cube (1)",
+              "Position": "0,-68.14787,0",
+              "Scale": "2.678212,0.697138,0.2460395",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "Components": [
+                {
+                  "__type": "ModelRenderer",
+                  "__guid": "763a678f-746c-4399-9f2e-f7b7d978f54f",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/dev/box.vmdl",
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "9cc5ba4a-44a0-45e1-9632-dd47f76b1226",
+              "Name": "Cube",
+              "Position": "-66.07721,0,32.35378",
+              "Scale": "1.426765,1.614615,1",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "Components": [
+                {
+                  "__type": "ModelRenderer",
+                  "__guid": "fb0f2f0b-e5de-4a4d-8ec0-b2453ea01bf5",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/dev/box.vmdl",
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "a6b74940-7ed5-4194-a211-cd74204659c5",
+              "Name": "Cube (1)",
+              "Position": "-48.52386,-111.3436,32.35378",
+              "Scale": "1.426765,1.614615,2.174283",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "Components": [
+                {
+                  "__type": "ModelRenderer",
+                  "__guid": "33376f94-8b74-4a89-9552-61804ff0be50",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/dev/box.vmdl",
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "d34bfb3a-7ab5-42f0-a240-c1336a9a3c0e",
+              "Name": "Cube (1)",
+              "Position": "-147.3331,-67.27559,32.35378",
+              "Scale": "1.426765,1.614615,2.202832",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "Components": [
+                {
+                  "__type": "ModelRenderer",
+                  "__guid": "a48503c7-853d-4a2d-852a-ce948a2692e8",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/dev/box.vmdl",
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            }
+          ]
         },
         {
-          "__type": "FloatingPoint",
-          "__guid": "8f32b8be-b264-4c4d-b9bb-300ad564708c",
-          "DepthBeforeSubmerged": 1,
-          "DisplacementAmount": 3,
-          "FloatSources": 1,
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "be31c7fe-978c-4f50-a54e-bfab8e024c78",
-            "go": "71cb66be-57cc-404a-8c95-9f86df3fd813",
-            "component_type": "Rigidbody"
-          },
-          "SamplePoints": 1000,
-          "Waves": {
-            "_type": "component",
-            "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
-            "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
-            "component_type": "Waves"
-          }
-        },
-        {
-          "__type": "Rigidbody",
-          "__guid": "be31c7fe-978c-4f50-a54e-bfab8e024c78",
-          "AngularDamping": 0.2,
-          "Gravity": true,
-          "LinearDamping": 0.3,
-          "Locking": {
-            "Roll": true
-          },
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
+          "__guid": "fd20385f-19e7-4816-b748-e87e556e58ca",
+          "Name": "World UI",
+          "Position": "0,0,113.3601",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "WorldPanel",
+              "__guid": "8f921a69-2419-40ed-a90f-d06a27c6b557",
+              "HorizontalAlign": "Center",
+              "LookAtCamera": true,
+              "PanelSize": "4096,1024",
+              "RenderScale": 4,
+              "VerticalAlign": "Center"
+            },
+            {
+              "__type": "TownInfo",
+              "__guid": "4474fbe2-cb7e-4ff2-b62c-b57706c5af62",
+              "Town": {
+                "_type": "component",
+                "component_id": "75f7fddc-b132-42c7-b9b0-7be4c585127a",
+                "go": "30b84981-6347-417e-86b3-f701dd692750",
+                "component_type": "Town"
+              }
+            }
+          ]
         }
       ]
     }
@@ -509,7 +474,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-21T21:40:22.3992344-03:00",
+  "LastSaved": "2024-03-22T11:08:18.9861318-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
