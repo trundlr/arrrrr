@@ -1,3 +1,5 @@
+using Pirate.UI;
+
 namespace Pirate.Town;
 
 public sealed class Town : Component, Component.ITriggerListener
@@ -8,17 +10,20 @@ public sealed class Town : Component, Component.ITriggerListener
 	[Property] public int BasePopulation { get; set; }
 	[Property] public int FishTradePrice { get; set; }
 	[Property] public float VisitRadius { get; set; } = DefaultVisitRadius;
+	[Property] public required TownInfo TownInfo { get; set; }
 
 	public int CurrentPopulation { get; set; }
 
 	public void OnTriggerEnter( Collider other )
 	{
-		Log.Info( other );
+		if ( other.GameObject.Root.Name == "Root (Pivot)" )
+			TownInfo.ShowStats = true;
 	}
 
 	public void OnTriggerExit( Collider other )
 	{
-		Log.Info( other + " exit" );
+		if ( other.GameObject.Root.Name == "Root (Pivot)" )
+			TownInfo.ShowStats = false;
 	}
 
 	protected override void OnStart()

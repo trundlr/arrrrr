@@ -7,14 +7,29 @@
     <div class="town-name">
         @Town.TownName
     </div>
+    @if (ShowStats)
+    {
+        <div class="town-stats">
+            <div class="stat">
+                <i>people</i>
+                @Town.CurrentPopulation
+            </div>
+            <div class="stat">
+                <i>set_meal</i>
+                @Town.FishTradePrice
+            </div>
+        </div>
+    }
 </root>
 
 @code
 {
     [Property] public required Town Town { get; set; }
 
+    public bool ShowStats { get; set; } = false;
+
     protected override int BuildHash()
     {
-        return HashCode.Combine(Town.TownName, Town.FishTradePrice, Town.CurrentPopulation);
+        return HashCode.Combine(Town.TownName, Town.FishTradePrice, Town.CurrentPopulation, ShowStats);
     }
 }

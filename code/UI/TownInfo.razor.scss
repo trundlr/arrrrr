@@ -1,20 +1,53 @@
 ﻿TownInfo {
-    background-color: #1d202811;
     align-items: center;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    flex-direction: column;
+    font-family: Overlock;
+    text-stroke: 4px black;
+    font-size: 64px;
+    color: white;
+    padding: 16px;
+    gap: 24px;
 
     > .town-name {
-        width: 100%;
-        height: 100%;
-        font-size: 96px;
-        text-stroke: 4px black;
-        font-family: Overlock;
-        font-weight: bold;
-        color: white;
+        flex-shrink: 0;
         background-color: #1d2028;
+        border-radius: 16px;
+        width: 100%;
+        padding: 16px;
+        font-size: 96px;
+        font-weight: bold;
         text-align: center;
         align-items: center;
         justify-content: center;
-        border-radius: 12px;
+    }
+
+    > .town-stats {
+        width: 100%;
+        align-items: center;
+        justify-content: space-evenly;
+        transition: all 0.5s;
+        transform: scale(1);
+        opacity: 1;
+        gap: 24px;
+
+        &:intro {
+            transform: scale(0);
+        }
+
+        &:outro {
+            transform: scale(0);
+        }
+
+        > .stat {
+            flex: 1;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            background-color: #1d2028;
+            border-radius: 16px;
+        }
     }
 }

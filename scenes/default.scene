@@ -308,6 +308,12 @@
           "__guid": "75f7fddc-b132-42c7-b9b0-7be4c585127a",
           "BasePopulation": 158,
           "FishTradePrice": 4,
+          "TownInfo": {
+            "_type": "component",
+            "component_id": "4474fbe2-cb7e-4ff2-b62c-b57706c5af62",
+            "go": "fd20385f-19e7-4816-b748-e87e556e58ca",
+            "component_type": "TownInfo"
+          },
           "TownName": "Dicksburg",
           "VisitRadius": 196
         },
@@ -432,7 +438,7 @@
               "__guid": "8f921a69-2419-40ed-a90f-d06a27c6b557",
               "HorizontalAlign": "Center",
               "LookAtCamera": true,
-              "PanelSize": "4096,1024",
+              "PanelSize": "4096,2048",
               "RenderScale": 4,
               "VerticalAlign": "Center"
             },
@@ -474,7 +480,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-22T11:08:18.9861318-03:00",
+  "LastSaved": "2024-03-22T12:53:51.3223048-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
