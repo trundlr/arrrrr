@@ -8,8 +8,8 @@ public sealed class ShipController : Component
 {
 	[Property] public float ShipSpeed { get; set; } = 20f;
 	[Property] public float TurningSpeed { get; set; } = 3f;
-	[Property, RequireComponent] public required Rigidbody Rigidbody { get; set; }
-	[Property, RequireComponent] public required Wind Wind { get; set; }
+	[Property] public required Rigidbody Rigidbody { get; set; }
+	[Property] public required Wind Wind { get; set; }
 
 	public bool AnchorDropped { get; set; }
 
@@ -28,7 +28,7 @@ public sealed class ShipController : Component
 
 	protected override void OnFixedUpdate()
 	{
-		Transform.Position += Vector3.Up * MathF.Sin( Time.Now ) / 16f;
+		var pitch = (MathF.Sin( Time.Now ) - 1f) * 3f;
 
 		var wishSpeed = GetWishSpeed();
 		var force = wishSpeed + Wind.WindForce;
@@ -39,9 +39,9 @@ public sealed class ShipController : Component
 		if ( AnchorDropped )
 			return;
 
+		var rot = new Angles( pitch, Transform.Rotation.Yaw() + Input.AnalogMove.y * TurningSpeed, 0f ).ToRotation();
 		Rigidbody.ApplyForce( force * Rigidbody.PhysicsBody.Mass );
-		Rigidbody.PhysicsBody.SmoothRotate(
-			Rotation.FromYaw( Transform.Rotation.Yaw() + Input.AnalogMove.y * TurningSpeed ), 1f / TurningSpeed,
+		Rigidbody.PhysicsBody.SmoothRotate( rot, 1f / TurningSpeed,
 			Time.Delta / 12f );
 	}
 

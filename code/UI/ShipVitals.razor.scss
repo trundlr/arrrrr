@@ -19,6 +19,20 @@ ShipVitals {
         width: 160px;
         justify-content: center;
 
+        > .icon {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 30px;
+            height: 30px;
+            background-color: $font-light;
+            mask-image: url("textures/ui/sail_icon.svg");
+            mask-mode: alpha;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            mask-size: cover;
+        }
+
         > .units {
             font-size: 24px;
             left: 2px;

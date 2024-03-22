@@ -5,6 +5,7 @@
 
 <root>
     <div class="speed">
+        <div class="icon"></div>
         <span>@Speed</span> <span class="units">u/s</span>
     </div>
     <div class="anchored @(Ship.AnchorDropped ? "show" : "")">Anchored</div>
@@ -12,9 +13,9 @@
 
 @code
 {
-    [Property, RequireComponent] public required ShipController Ship { get; set; }
+    [Property] public required ShipController Ship { get; set; }
 
-    private string Speed => $"{Ship.Rigidbody.Velocity.Length:F0}";
+    private string Speed => $"{Ship.Rigidbody.Velocity.WithZ(0f).Length:F0}";
 
     protected override int BuildHash()
     {
