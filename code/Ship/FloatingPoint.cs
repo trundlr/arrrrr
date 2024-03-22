@@ -39,17 +39,17 @@ public sealed class FloatingPoint : Component
 		}
 
 		// Calculate average position of submerged area
-		// Vector3 averagePosition = 0f;
-		// foreach ( var point in submergedPoints )
-		// {
-		// 	averagePosition += point;
-		// }
-		//
-		// averagePosition /= submergedPoints.Count;
+		Vector3 averagePosition = 0f;
+		foreach ( var point in submergedPoints )
+		{
+			averagePosition += point;
+		}
+
+		averagePosition /= submergedPoints.Count;
 
 		var massSubmerged = (float)submergedPoints.Count / RandomPoints.Length;
 
-		Rigidbody.ApplyForceAt( Rigidbody.PhysicsBody.MassCenter,
+		Rigidbody.ApplyForceAt( averagePosition,
 			-Scene.PhysicsWorld.Gravity * Rigidbody.PhysicsBody.Mass * massSubmerged * 10f * (1f / DensityModifier) );
 	}
 

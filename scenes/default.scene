@@ -39,7 +39,7 @@
     {
       "__guid": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
       "Name": "Water",
-      "Position": "0,0,-2.564457",
+      "Position": "0,174.5852,-2.564457",
       "Scale": "100,100,1",
       "Enabled": true,
       "NetworkMode": 2,
@@ -48,7 +48,7 @@
           "__type": "ModelRenderer",
           "__guid": "145e186b-36e1-438a-a7fa-bf3d770fd726",
           "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/water/water_temp.vmat",
+          "MaterialOverride": "materials/other_water.vmat",
           "Model": "models/dev/plane.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -59,6 +59,10 @@
           "Amplitude": 8,
           "Length": 2,
           "Speed": 1
+        },
+        {
+          "__type": "Water",
+          "__guid": "5777b5e2-0bd3-4015-a444-d964de2a9dfe"
         }
       ]
     },
@@ -480,7 +484,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-22T12:53:51.3223048-03:00",
+  "LastSaved": "2024-03-22T16:26:24.0741391-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
