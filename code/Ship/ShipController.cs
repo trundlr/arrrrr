@@ -37,10 +37,12 @@ public sealed class ShipController : Component
 		force *= (90f / angle).Clamp( 0.8f, 2f );
 
 		if ( AnchorDropped )
-			return;
+		{
+			force = 0f;
+		}
 
 		var rot = new Angles( pitch, Transform.Rotation.Yaw() + Input.AnalogMove.y * TurningSpeed, 0f ).ToRotation();
-		Rigidbody.ApplyForce( force * Rigidbody.PhysicsBody.Mass );
+		Rigidbody.ApplyForceAt( Rigidbody.PhysicsBody.MassCenter, force * Rigidbody.PhysicsBody.Mass );
 		Rigidbody.PhysicsBody.SmoothRotate( rot, 1f / TurningSpeed,
 			Time.Delta / 12f );
 	}

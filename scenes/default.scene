@@ -95,7 +95,8 @@
       "Components": [
         {
           "__type": "Wind",
-          "__guid": "1fd66166-e948-4b4e-af4b-bbd88ab4d909"
+          "__guid": "1fd66166-e948-4b4e-af4b-bbd88ab4d909",
+          "WindForce": "2,4,0"
         }
       ]
     },
@@ -164,7 +165,7 @@
             {
               "__type": "FloatingPoint",
               "__guid": "fb0c2b2e-1dc3-4801-9a9a-9e2407b1d2ab",
-              "DensityModifier": 1,
+              "DensityModifier": 0.9,
               "DrawSamplingDebug": false,
               "Rigidbody": {
                 "_type": "component",
@@ -173,6 +174,7 @@
                 "component_type": "Rigidbody"
               },
               "SamplePoints": 500,
+              "UseAverageSamplePosition": false,
               "Waves": {
                 "_type": "component",
                 "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
@@ -270,6 +272,7 @@
             "component_type": "Rigidbody"
           },
           "SamplePoints": 500,
+          "UseAverageSamplePosition": true,
           "Waves": {
             "_type": "component",
             "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
@@ -484,7 +487,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-22T16:26:24.0741391-03:00",
+  "LastSaved": "2024-03-22T17:04:48.6922895-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

@@ -7,6 +7,7 @@ public sealed class FloatingPoint : Component
 	[Property] public float DensityModifier { get; set; } = 1f;
 	[Property] public int SamplePoints { get; set; }
 	[Property] public bool DrawSamplingDebug { get; set; } = false;
+	[Property] public bool UseAverageSamplePosition { get; set; } = true;
 
 	private Vector3[]? RandomPoints { get; set; }
 
@@ -49,7 +50,7 @@ public sealed class FloatingPoint : Component
 
 		var massSubmerged = (float)submergedPoints.Count / RandomPoints.Length;
 
-		Rigidbody.ApplyForceAt( averagePosition,
+		Rigidbody.ApplyForceAt( UseAverageSamplePosition ? averagePosition : Rigidbody.PhysicsBody.MassCenter,
 			-Scene.PhysicsWorld.Gravity * Rigidbody.PhysicsBody.Mass * massSubmerged * 10f * (1f / DensityModifier) );
 	}
 
