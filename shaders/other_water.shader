@@ -166,7 +166,7 @@ PS
 		
 		float2 offsetCoordinatesBy = float2( g_flTime * 2, g_flTime * 2 );
 		float2 tileOffset = TileAndOffsetUv( positionInWorldSpace.xy, float2( 0.5, 0.5 ), offsetCoordinatesBy );
-		float noise = VoronoiNoise( tileOffset * 0.01, g_flTime * 0.2, 1 ) * 0.025;
+		float noise = VoronoiNoise( tileOffset * 0.01, g_flTime * 1, 1 ) * 0.025;
 		// float noiseStepped = step( noise, 0.01 );
 		return float4( noise, noise, noise, 0.5 );
 	}

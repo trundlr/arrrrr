@@ -1,6 +1,6 @@
 ﻿namespace Pirate.World;
 
-[Title( "Wind" ), Category( "Pirates" )]
+[Title( "World - Wind" ), Category( "Pirates" )]
 public sealed class Wind : Component
 {
 	public Vector3 WindDirection => WindForce.Normal;

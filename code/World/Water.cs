@@ -1,3 +1,6 @@
+namespace Pirate.World;
+
+[Title( "World - Water" ), Category( "Pirates" )]
 public sealed class Water : Component
 {
 	[Property] public int Resolution { get; set; } = 100;

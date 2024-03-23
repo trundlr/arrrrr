@@ -62,7 +62,7 @@
         },
         {
           "__type": "Water",
-          "__guid": "5777b5e2-0bd3-4015-a444-d964de2a9dfe",
+          "__guid": "f415b7aa-683b-423e-9936-c506483f495d",
           "EdgeLength": 100,
           "Material": "materials/other_water.vmat",
           "Resolution": 200
@@ -100,6 +100,11 @@
           "__type": "Wind",
           "__guid": "1fd66166-e948-4b4e-af4b-bbd88ab4d909",
           "WindForce": "2,4,0"
+        },
+        {
+          "__type": "WorldSounds",
+          "__guid": "2e9166e0-1ecd-4dc2-b871-7e6f574ecb49",
+          "Ambience": "sounds/ambience/ocean_ambient.sound"
         }
       ]
     },
@@ -176,6 +181,7 @@
                 "go": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
                 "component_type": "Rigidbody"
               },
+              "SampleModifier": 0.5,
               "SamplePoints": 500,
               "UseAverageSamplePosition": false,
               "Waves": {
@@ -274,6 +280,7 @@
             "go": "ef3d748e-e819-4845-9bbe-13f9bcdaf843",
             "component_type": "Rigidbody"
           },
+          "SampleModifier": 1,
           "SamplePoints": 500,
           "UseAverageSamplePosition": true,
           "Waves": {
@@ -490,7 +497,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-22T23:41:07.9206528-03:00",
+  "LastSaved": "2024-03-23T13:56:44.8433372-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

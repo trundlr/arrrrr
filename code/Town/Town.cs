@@ -2,6 +2,7 @@ using Pirate.UI;
 
 namespace Pirate.Town;
 
+[Title( "Town - Component" ), Category( "Pirate" )]
 public sealed class Town : Component, Component.ITriggerListener
 {
 	private const float DefaultVisitRadius = 128f;
