@@ -48,7 +48,7 @@
           "__type": "ModelRenderer",
           "__guid": "145e186b-36e1-438a-a7fa-bf3d770fd726",
           "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/other_water.vmat",
+          "MaterialOverride": "materials/black_matte.vmat",
           "Model": "models/cloth/cloth.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -111,7 +111,7 @@
     {
       "__guid": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
       "Name": "Root (Pivot)",
-      "Position": "0,0,-88.40097",
+      "Position": "0,0,-57.72198",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -154,7 +154,7 @@
                 "go": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
                 "component_type": "Rigidbody"
               },
-              "ShipSpeed": 80,
+              "ShipSpeed": 160,
               "TurningSpeed": 3,
               "Wind": {
                 "_type": "component",
@@ -273,7 +273,7 @@
           "__type": "FloatingPoint",
           "__guid": "1789de4a-6227-4e4a-885e-3796b87896b7",
           "DensityModifier": 3,
-          "DrawSamplingDebug": true,
+          "DrawSamplingDebug": false,
           "Rigidbody": {
             "_type": "component",
             "component_id": "f1597ee8-90e1-4e95-9b91-cd2cc1349c9e",
@@ -497,7 +497,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-23T13:56:44.8433372-03:00",
+  "LastSaved": "2024-03-23T14:30:48.3503984-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

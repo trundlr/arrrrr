@@ -34,7 +34,7 @@ public sealed class ShipController : Component
 		var force = wishSpeed + Wind.WindForce;
 
 		var angle = Transform.Rotation.Forward.Normal.Angle( Wind.WindDirection );
-		force *= (90f / angle).Clamp( 0.8f, 2f );
+		force *= (90f / angle).Clamp( 0.8f, 1.5f );
 
 		if ( AnchorDropped )
 		{
