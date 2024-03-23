@@ -1,10 +1,12 @@
 namespace Pirate.Ship;
 
+[Title( "Physics - Floating Point" ), Category( "Pirates" )]
 public sealed class FloatingPoint : Component
 {
 	[Property] public required Rigidbody Rigidbody { get; set; }
 	[Property] public required Waves Waves { get; set; }
 	[Property] public float DensityModifier { get; set; } = 1f;
+	[Property] public float SampleModifier { get; set; } = 1f;
 	[Property] public int SamplePoints { get; set; }
 	[Property] public bool DrawSamplingDebug { get; set; } = false;
 	[Property] public bool UseAverageSamplePosition { get; set; } = true;
@@ -18,9 +20,10 @@ public sealed class FloatingPoint : Component
 		RandomPoints = new Vector3[SamplePoints];
 
 		var bounds = Rigidbody.PhysicsBody.GetBounds();
+		var hhBounds = new BBox( bounds.Mins, bounds.Maxs.WithZ( bounds.Maxs.z * SampleModifier ) );
 		for ( var i = 0; i < SamplePoints; i++ )
 		{
-			RandomPoints[i] = Transform.World.PointToLocal( bounds.RandomPointInside );
+			RandomPoints[i] = Transform.World.PointToLocal( hhBounds.RandomPointInside );
 		}
 	}
 
