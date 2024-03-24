@@ -33,6 +33,8 @@ public class GunController : Component
 		if ( !projectile.Components.TryGet( out Rigidbody rigidbody ) )
 			return;
 
+		Sound.Play( "cannon_fire", sourcePos );
+
 		rigidbody.ApplyImpulse( fireRotation.Forward * Force * rigidbody.PhysicsBody.Mass );
 	}
 

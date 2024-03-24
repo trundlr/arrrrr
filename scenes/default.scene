@@ -120,7 +120,8 @@
     {
       "__guid": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
       "Name": "Root (Pivot)",
-      "Position": "228.8864,0,-57.72198",
+      "Position": "-122.4661,0,-57.72198",
+      "Rotation": "0,0,-0.4417721,0.8971273",
       "Tags": "solid,ship",
       "Enabled": true,
       "NetworkMode": 2,
@@ -766,7 +767,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-24T13:29:41.0355116-03:00",
+  "LastSaved": "2024-03-24T14:02:05.330931-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [
