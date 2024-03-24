@@ -1,14 +1,14 @@
 {
   "RootObject": {
-    "__guid": "c0eed29a-d912-44ab-873c-4405c9eafdd9",
-    "Name": "Explosion Emitter",
+    "__guid": "1d57c85f-2cfc-43d0-86c8-e0584cb30e56",
+    "Name": "cannonball_explosion",
     "Tags": "particles",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "ParticleEffect",
-        "__guid": "7adaa6e5-3f76-4687-9e61-375f564ca51f",
+        "__guid": "ea6991e5-020e-4a36-8c14-5bff38055122",
         "Alpha": {
           "Type": "Curve",
           "CurveA": [
@@ -69,7 +69,7 @@
             ],
             "alpha": []
           },
-          "ConstantA": "0.99535,0.01852,0.01852,1",
+          "ConstantA": "0.75814,0.31589,0,1",
           "ConstantB": "1,1,1,1"
         },
         "Lifetime": {
@@ -108,11 +108,11 @@
         },
         "Stretch": {},
         "TimeScale": 1,
-        "Tint": "1,0.46667,0,1"
+        "Tint": "1,0.6,0,1"
       },
       {
         "__type": "ParticleSpriteRenderer",
-        "__guid": "3577a6a1-96ca-45b6-a693-e8278351b8f9",
+        "__guid": "8fb69fd6-c427-4c8a-83ae-3012bad45682",
         "Additive": true,
         "BlurAmount": 1,
         "BlurOpacity": 0.5,
@@ -122,7 +122,7 @@
         "FogStrength": 1,
         "LeadingTrail": true,
         "MotionBlur": true,
-        "Opaque": false,
+        "Opaque": true,
         "RotationOffset": 0,
         "Scale": 2,
         "Shadows": false,
@@ -131,7 +131,7 @@
       },
       {
         "__type": "ParticleSphereEmitter",
-        "__guid": "43644e0f-3541-4fc2-a27c-55f4d4808d14",
+        "__guid": "5a596d4a-0ca4-4cf6-91f5-5ebba4486ada",
         "Burst": 100,
         "Delay": 0,
         "DestroyOnEnd": true,
@@ -142,7 +142,8 @@
         "Rate": 0,
         "Velocity": 500
       }
-    ]
+    ],
+    "Children": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

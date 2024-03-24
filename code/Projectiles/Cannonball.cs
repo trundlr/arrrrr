@@ -13,6 +13,7 @@ public sealed class Cannonball : Component, Component.ICollisionListener
 	{
 		if ( other.Other.GameObject.Tags.Has( "ship" ) )
 		{
+			Sound.Play( "cannon_ship_impact", other.Contact.Point );
 			HandleShipCollision( other.Other );
 			return;
 		}

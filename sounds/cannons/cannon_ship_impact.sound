@@ -1,0 +1,21 @@
+{
+  "UI": false,
+  "Volume": "0.70,1.00,1",
+  "Pitch": "0.80,1.20,1",
+  "Decibels": 90,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/cannons/cannon_impact_1.vsnd",
+    "sounds/cannons/cannon_impact_2.vsnd",
+    "sounds/cannons/cannon_impact_3.vsnd"
+  ],
+  "Occlusion": true,
+  "Reflections": false,
+  "AirAbsorption": false,
+  "Transmission": false,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": false,
+  "ResourceVersion": 0,
+  "__version": 0,
+  "__references": []
+}
