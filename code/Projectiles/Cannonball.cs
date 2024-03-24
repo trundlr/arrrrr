@@ -1,4 +1,5 @@
 using System;
+using Pirate.Ship;
 
 namespace Pirate.Projectiles;
 
@@ -13,34 +14,38 @@ public sealed class Cannonball : Component, Component.ICollisionListener
 	{
 		if ( other.Other.GameObject.Tags.Has( "ship" ) )
 		{
-			Sound.Play( "cannon_ship_impact", other.Contact.Point );
-			HandleShipCollision( other.Other );
+			HandleShipCollision( other );
 			return;
 		}
 
 		if ( other.Other.GameObject.Tags.Has( "solid" ) )
 		{
-			HandleSolidCollision( other.Other );
+			HandleSolidCollision( other );
 			return;
 		}
 
 		if ( other.Other.GameObject.Tags.HasAny( "water" ) )
-			HandleWaterCollision( other.Other );
+			HandleWaterCollision( other );
 	}
 
-	private void HandleShipCollision( CollisionSource source )
+	private void HandleShipCollision( Collision source )
 	{
+		if ( !source.Other.GameObject.Components.TryGet( out ShipController ship ) )
+			return;
+
+		Sound.Play( "cannon_ship_impact", source.Contact.Point );
 		ShipCollisionEmitter.Clone( Transform.Position );
+		ship.Hit( source.Contact.Point, source.Contact.Speed, Rigidbody.PhysicsBody.Mass * 10f );
 		GameObject.Destroy();
 	}
 
-	private void HandleSolidCollision( CollisionSource source )
+	private void HandleSolidCollision( Collision source )
 	{
 		Log.Info( "omg i hit solid ground" );
 		GameObject.Destroy();
 	}
 
-	private void HandleWaterCollision( CollisionSource source )
+	private void HandleWaterCollision( Collision source )
 	{
 		Log.Info( "omg i hit water" );
 		// play a sound and particle

@@ -51,11 +51,19 @@ public sealed class ShipController : Component
 			}
 		}
 
-		var rot = new Angles( pitch, Transform.Rotation.Yaw() + Input.AnalogMove.y * TurningSpeed, 0f ).ToRotation();
+		Rotation rot;
+
+		rot = PlayerControlled
+			? new Angles( pitch, Transform.Rotation.Yaw() + Input.AnalogMove.y * TurningSpeed, 0f ).ToRotation()
+			: new Angles( pitch, Transform.Rotation.Yaw(), 0f ).ToRotation();
 		Rigidbody.ApplyForceAt( Rigidbody.PhysicsBody.MassCenter, force * Rigidbody.PhysicsBody.Mass );
-		if ( PlayerControlled )
-			Rigidbody.PhysicsBody.SmoothRotate( rot, 1f / TurningSpeed,
-				Time.Delta / 12f );
+		Rigidbody.PhysicsBody.SmoothRotate( rot, 1f / TurningSpeed,
+			Time.Delta / 12f );
+	}
+
+	public void Hit( Vector3 position, Vector3 velocity, float mass )
+	{
+		Rigidbody.PhysicsBody.ApplyImpulseAt( position, velocity * mass );
 	}
 
 	private Vector3 GetWishSpeed()

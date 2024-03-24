@@ -120,8 +120,8 @@
     {
       "__guid": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
       "Name": "Root (Pivot)",
-      "Position": "-122.4661,0,-57.72198",
-      "Rotation": "0,0,-0.4417721,0.8971273",
+      "Position": "98.1414,100.8139,-57.72282",
+      "Rotation": "0,0,-0.7071068,0.7071068",
       "Tags": "solid,ship",
       "Enabled": true,
       "NetworkMode": 2,
@@ -354,8 +354,8 @@
     {
       "__guid": "48bdb15c-5e00-4d24-9b33-d5e294146df2",
       "Name": "Root (1)",
-      "Position": "-517.1302,-243.8241,-57.72227",
-      "Rotation": "0,0,-0.3826834,0.9238796",
+      "Position": "-272.524,-147.7319,-57.72261",
+      "Rotation": "0,0,0.7071068,0.7071068",
       "Tags": "solid,ship",
       "Enabled": true,
       "NetworkMode": 2,
@@ -767,7 +767,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-24T14:02:05.330931-03:00",
+  "LastSaved": "2024-03-24T14:27:20.2523903-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [

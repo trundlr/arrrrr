@@ -23,7 +23,7 @@
         "Gravity": false,
         "LinearDamping": 0.5,
         "Locking": {},
-        "MassOverride": 10,
+        "MassOverride": 50,
         "MotionEnabled": true,
         "RigidbodyFlags": 0,
         "StartAsleep": false
