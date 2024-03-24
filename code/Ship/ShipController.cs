@@ -14,6 +14,7 @@ public sealed class ShipController : Component
 	[Property] public required GunController Guns { get; set; }
 
 	public bool AnchorDropped { get; set; }
+	public bool Fishing { get; set; }
 
 	protected override void OnUpdate()
 	{
@@ -49,11 +50,15 @@ public sealed class ShipController : Component
 			{
 				Guns.Fire();
 			}
+
+			if ( Input.Pressed( "fish" ) )
+			{
+				Fishing = !Fishing;
+				AnchorDropped = Fishing;
+			}
 		}
 
-		Rotation rot;
-
-		rot = PlayerControlled
+		var rot = PlayerControlled
 			? new Angles( pitch, Transform.Rotation.Yaw() + Input.AnalogMove.y * TurningSpeed, 0f ).ToRotation()
 			: new Angles( pitch, Transform.Rotation.Yaw(), 0f ).ToRotation();
 		Rigidbody.ApplyForceAt( Rigidbody.PhysicsBody.MassCenter, force * Rigidbody.PhysicsBody.Mass );
@@ -71,6 +76,11 @@ public sealed class ShipController : Component
 		if ( !PlayerControlled )
 			return 0f;
 		return Transform.Rotation.Forward.Normal * MathF.Abs( Input.AnalogMove.x ) * ShipSpeed;
+	}
+
+	public bool CanFish( FishingSpot fishingSpot )
+	{
+		return fishingSpot.Transform.Position.Distance( Transform.Position ) < 250f;
 	}
 
 	protected override void DrawGizmos()

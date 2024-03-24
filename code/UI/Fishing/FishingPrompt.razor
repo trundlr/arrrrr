@@ -1,0 +1,27 @@
+﻿@namespace Pirate.UI.Fishing
+@using System
+@using Pirate.Ship
+@using Pirate.World
+@inherits PanelComponent
+
+<root>
+    <div class="prompt @ShouldShow()">
+        Press F to fish
+    </div>
+</root>
+
+@code
+{
+    [Property] public required FishingSpot FishingSpot { get; set; }
+    [Property] public required ShipController Ship { get; set; }
+
+    private string ShouldShow()
+    {
+        return Ship.Fishing || !Ship.CanFish(FishingSpot) ? "" : "show";
+    }
+
+    protected override int BuildHash()
+    {
+        return HashCode.Combine(Ship.Fishing, Ship.CanFish(FishingSpot));
+    }
+}

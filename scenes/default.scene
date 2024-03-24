@@ -742,6 +742,189 @@
           "Static": false
         }
       ]
+    },
+    {
+      "__guid": "ae7016ae-6ddd-43b9-951f-be1d6d3063b2",
+      "Name": "Fishing Spot",
+      "Position": "1175.225,-112.8453,0",
+      "Tags": "particles",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "FishingSpot",
+          "__guid": "02820898-6906-431f-ab47-1c4db6ebb244",
+          "Emitter": {
+            "_type": "component",
+            "component_id": "519d58e7-e28b-4b43-a949-7566a9e81bbc",
+            "go": "ae7016ae-6ddd-43b9-951f-be1d6d3063b2",
+            "component_type": "ParticleRingEmitter"
+          },
+          "Radius": 100
+        },
+        {
+          "__type": "ParticleRingEmitter",
+          "__guid": "519d58e7-e28b-4b43-a949-7566a9e81bbc",
+          "Angle": {
+            "Constants": "360,0,0,0"
+          },
+          "AngleStart": {},
+          "Burst": 100,
+          "Delay": 0,
+          "DestroyOnEnd": false,
+          "Duration": 10,
+          "Flatness": {
+            "Constants": "2,0,0,0"
+          },
+          "Loop": true,
+          "Radius": {
+            "Constants": "50,0,0,0"
+          },
+          "Rate": 172.96,
+          "Thickness": {
+            "Constants": "25,0,0,0"
+          },
+          "VelocityFromCenter": {
+            "Constants": "10,0,0,0"
+          },
+          "VelocityFromRing": {
+            "Constants": "5,0,0,0"
+          }
+        },
+        {
+          "__type": "ParticleEffect",
+          "__guid": "c4bd58fa-db73-49fc-9c60-4fce193dbf28",
+          "Alpha": {
+            "Constants": "1,0,0,0"
+          },
+          "ApplyColor": true,
+          "ApplyRotation": false,
+          "ApplyShape": true,
+          "Bounce": {
+            "Constants": "1,0,0,0"
+          },
+          "Brightness": {
+            "Constants": "1,0,0,0"
+          },
+          "Bumpiness": {},
+          "Collision": false,
+          "CollisionRadius": 1,
+          "Damping": {},
+          "DieOnCollisionChance": {},
+          "Force": false,
+          "ForceDirection": "0,0,100",
+          "ForceScale": {
+            "Constants": "5,0,0,0"
+          },
+          "Friction": {
+            "Constants": "1,0,0,0"
+          },
+          "Gradient": {
+            "GradientA": {
+              "color": [
+                {
+                  "t": 0.5,
+                  "c": "1,1,1,1"
+                }
+              ],
+              "alpha": []
+            },
+            "GradientB": {
+              "color": [
+                {
+                  "t": 0.5,
+                  "c": "1,1,1,1"
+                }
+              ],
+              "alpha": []
+            },
+            "ConstantA": "0.66042,0.82866,0.98605,1",
+            "ConstantB": "1,1,1,1"
+          },
+          "Lifetime": {
+            "Constants": "1,0,0,0"
+          },
+          "MaxParticles": 1000,
+          "PerParticleTimeScale": {
+            "Constants": "1,0,0,0"
+          },
+          "PreWarm": 0,
+          "PushStrength": {},
+          "Roll": {},
+          "Scale": {
+            "Constants": "2,0,0,0"
+          },
+          "SequenceId": {},
+          "SequenceSpeed": {
+            "Constants": "1,0,0,0"
+          },
+          "SequenceTime": {
+            "Constants": "1,0,0,0"
+          },
+          "SheetSequence": false,
+          "Space": "World",
+          "StartVelocity": {
+            "Constants": "1,0,0,0"
+          },
+          "Stretch": {},
+          "TimeScale": 1,
+          "Tint": "0.64208,0.92299,0.98605,1"
+        },
+        {
+          "__type": "ParticleSpriteRenderer",
+          "__guid": "9c237542-f3fa-4e42-9c54-b8737400587f",
+          "Additive": false,
+          "BlurAmount": 1,
+          "BlurOpacity": 0.5,
+          "BlurSpacing": 0.5,
+          "DepthFeather": 0,
+          "FaceVelocity": false,
+          "FogStrength": 1,
+          "LeadingTrail": true,
+          "MotionBlur": true,
+          "Opaque": true,
+          "RotationOffset": 0,
+          "Scale": 1,
+          "Shadows": true,
+          "SortMode": "Unsorted",
+          "Texture": "materials/particles/shapes/bean1.vtex"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "578b417b-3a3a-4e7c-92d3-32cde93eb1e5",
+          "Name": "Screen UI",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "FishingPrompt",
+              "__guid": "706ce8d1-1c0f-4845-a470-ebb185906114",
+              "FishingSpot": {
+                "_type": "component",
+                "component_id": "02820898-6906-431f-ab47-1c4db6ebb244",
+                "go": "ae7016ae-6ddd-43b9-951f-be1d6d3063b2",
+                "component_type": "FishingSpot"
+              },
+              "Ship": {
+                "_type": "component",
+                "component_id": "aa3e82ed-4f15-4b5e-8919-c241bbafedbc",
+                "go": "40907fe7-6b22-4e97-8f60-3ac626f589f3",
+                "component_type": "ShipController"
+              }
+            },
+            {
+              "__type": "ScreenPanel",
+              "__guid": "a1983515-1202-4702-b47e-0999552c4203",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -767,7 +950,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-24T14:27:20.2523903-03:00",
+  "LastSaved": "2024-03-24T17:00:02.6217899-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [

@@ -4,11 +4,11 @@
 @inherits PanelComponent
 
 <root>
+    <div class="anchored @(Ship.AnchorDropped ? "show" : "")">Anchored</div>
     <div class="speed">
         <div class="icon"></div>
         <span>@Speed</span> <span class="units">u/s</span>
     </div>
-    <div class="anchored @(Ship.AnchorDropped ? "show" : "")">Anchored</div>
 </root>
 
 @code

@@ -6,7 +6,7 @@ TownInfo {
     height: 100%;
     flex: 1;
     flex-direction: column;
-    font-family: Overlock;
+    font-family: $font-family;
     text-stroke: 4px black;
     font-size: 64px;
     color: $font-light;

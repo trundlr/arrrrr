@@ -1,11 +1,10 @@
-﻿$bg-dark: #182229;
-$font-light: #f5f8fe;
+﻿@import "./common.scss";
 
 ShipVitals {
     align-self: flex-end;
     bottom: 80px;
     left: 120px;
-    font-family: Overlock;
+    font-family: $font-family;
     flex-direction: column;
     gap: 12px;
 
@@ -50,11 +49,11 @@ ShipVitals {
         font-weight: bold;
         width: 160px;
         justify-content: center;
-        transform: translateY(200px);
+        transform: translateX(-400px);
         transition: transform 0.15s ease-in;
 
         &.show {
-            transform: translateY(0px);
+            transform: translateX(0px);
         }
     }
 }
