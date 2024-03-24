@@ -76,6 +76,12 @@
           "Name": "right",
           "KeyboardCode": "D",
           "GroupName": "Other"
+        },
+        {
+          "Name": "fire",
+          "KeyboardCode": "SPACE",
+          "GamepadCode": "RightTrigger",
+          "GroupName": "Ship"
         }
       ],
       "__guid": "638eaf00-27b0-4a81-8bc2-8bcf3c3489c1"

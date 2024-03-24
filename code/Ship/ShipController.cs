@@ -8,8 +8,10 @@ public sealed class ShipController : Component
 {
 	[Property] public float ShipSpeed { get; set; } = 20f;
 	[Property] public float TurningSpeed { get; set; } = 3f;
+	[Property] public bool PlayerControlled { get; set; } = false;
 	[Property] public required Rigidbody Rigidbody { get; set; }
 	[Property] public required Wind Wind { get; set; }
+	[Property] public required GunController Guns { get; set; }
 
 	public bool AnchorDropped { get; set; }
 
@@ -41,14 +43,25 @@ public sealed class ShipController : Component
 			force = 0f;
 		}
 
+		if ( PlayerControlled )
+		{
+			if ( Input.Pressed( "fire" ) )
+			{
+				Guns.Fire();
+			}
+		}
+
 		var rot = new Angles( pitch, Transform.Rotation.Yaw() + Input.AnalogMove.y * TurningSpeed, 0f ).ToRotation();
 		Rigidbody.ApplyForceAt( Rigidbody.PhysicsBody.MassCenter, force * Rigidbody.PhysicsBody.Mass );
-		Rigidbody.PhysicsBody.SmoothRotate( rot, 1f / TurningSpeed,
-			Time.Delta / 12f );
+		if ( PlayerControlled )
+			Rigidbody.PhysicsBody.SmoothRotate( rot, 1f / TurningSpeed,
+				Time.Delta / 12f );
 	}
 
 	private Vector3 GetWishSpeed()
 	{
+		if ( !PlayerControlled )
+			return 0f;
 		return Transform.Rotation.Forward.Normal * MathF.Abs( Input.AnalogMove.x ) * ShipSpeed;
 	}
 

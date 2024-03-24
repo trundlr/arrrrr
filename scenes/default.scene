@@ -41,6 +41,7 @@
       "Name": "Water",
       "Position": "0,174.5852,0",
       "Scale": "100,100,1",
+      "Tags": "water",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -48,7 +49,7 @@
           "__type": "ModelRenderer",
           "__guid": "145e186b-36e1-438a-a7fa-bf3d770fd726",
           "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/black_matte.vmat",
+          "MaterialOverride": "materials/water/water_temp.vmat",
           "Model": "models/cloth/cloth.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -66,6 +67,14 @@
           "EdgeLength": 100,
           "Material": "materials/other_water.vmat",
           "Resolution": 200
+        },
+        {
+          "__type": "PlaneCollider",
+          "__guid": "9b9d4aea-b733-4199-a23e-a540d80edcb0",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "150,150",
+          "Static": true
         }
       ]
     },
@@ -112,6 +121,7 @@
       "__guid": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
       "Name": "Root (Pivot)",
       "Position": "0,0,-57.72198",
+      "Tags": "solid,ship",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -148,6 +158,13 @@
             {
               "__type": "ShipController",
               "__guid": "aa3e82ed-4f15-4b5e-8919-c241bbafedbc",
+              "Guns": {
+                "_type": "component",
+                "component_id": "f2035fbd-4ed5-4660-a75a-634e85768a97",
+                "go": "40907fe7-6b22-4e97-8f60-3ac626f589f3",
+                "component_type": "GunController"
+              },
+              "PlayerControlled": true,
               "Rigidbody": {
                 "_type": "component",
                 "component_id": "acc57957-6f3a-4c1c-ab23-2011a2444830",
@@ -182,13 +199,52 @@
                 "component_type": "Rigidbody"
               },
               "SampleModifier": 0.5,
-              "SamplePoints": 500,
+              "SamplePoints": 1000,
               "UseAverageSamplePosition": false,
               "Waves": {
                 "_type": "component",
                 "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
                 "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
                 "component_type": "Waves"
+              }
+            },
+            {
+              "__type": "GunController",
+              "__guid": "f2035fbd-4ed5-4660-a75a-634e85768a97",
+              "Force": 800,
+              "GunSources": [
+                {
+                  "_type": "gameobject",
+                  "go": "aa5245fc-822b-4647-990f-020240964cf7"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "926e6d0a-8463-4714-a75b-0f4f4fb477f0"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "e8d45c44-f2f7-472b-833c-dab498d775bd"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "0b7d8f1d-f439-4662-bb36-18635b0a78ae"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "4670c788-6256-4b61-963d-639534fa861e"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "8438baea-a29c-4d57-bc33-7d1ad3bde545"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "13d9f5fb-e732-4421-af00-16225a36744d"
+                }
+              ],
+              "ProjectilePrefab": {
+                "_type": "gameobject",
+                "prefab": "prefabs/ship/cannonball.prefab"
               }
             }
           ]
@@ -226,6 +282,161 @@
           "Position": "115.2232,0,98.62769",
           "Enabled": true,
           "NetworkMode": 2
+        },
+        {
+          "__guid": "a520b9fc-c8db-4169-bc51-20d7e80f3c12",
+          "Name": "Cannon Sources",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Children": [
+            {
+              "__guid": "aa5245fc-822b-4647-990f-020240964cf7",
+              "Name": "1",
+              "Position": "7.009673,-86.32488,80.63979",
+              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Enabled": true,
+              "NetworkMode": 2
+            },
+            {
+              "__guid": "926e6d0a-8463-4714-a75b-0f4f4fb477f0",
+              "Name": "2",
+              "Position": "42.56132,-94.54398,74.6411",
+              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Enabled": true,
+              "NetworkMode": 2
+            },
+            {
+              "__guid": "e8d45c44-f2f7-472b-833c-dab498d775bd",
+              "Name": "3",
+              "Position": "79.36474,-100.1759,74.4922",
+              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Enabled": true,
+              "NetworkMode": 2
+            },
+            {
+              "__guid": "0b7d8f1d-f439-4662-bb36-18635b0a78ae",
+              "Name": "4",
+              "Position": "114.4315,-102.2076,73.77129",
+              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Enabled": true,
+              "NetworkMode": 2
+            },
+            {
+              "__guid": "4670c788-6256-4b61-963d-639534fa861e",
+              "Name": "5",
+              "Position": "154.2187,-100.6778,72.28738",
+              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Enabled": true,
+              "NetworkMode": 2
+            },
+            {
+              "__guid": "8438baea-a29c-4d57-bc33-7d1ad3bde545",
+              "Name": "6",
+              "Position": "188.9286,-96.04745,70.42056",
+              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Enabled": true,
+              "NetworkMode": 2
+            },
+            {
+              "__guid": "13d9f5fb-e732-4421-af00-16225a36744d",
+              "Name": "7",
+              "Position": "223.5989,-81.63108,66.85562",
+              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Enabled": true,
+              "NetworkMode": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "48bdb15c-5e00-4d24-9b33-d5e294146df2",
+      "Name": "Root (1)",
+      "Position": "-517.1302,-243.8241,-57.72227",
+      "Rotation": "0,0,-0.3826834,0.9238796",
+      "Tags": "solid,ship",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Rigidbody",
+          "__guid": "0ee452b7-85d9-4c0a-97ce-6151109eae79",
+          "AngularDamping": 0.35,
+          "Gravity": true,
+          "LinearDamping": 0.65,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "bd57d345-7fdd-4034-bb95-39e499d9ae00",
+          "Name": "Ship",
+          "Position": "0,0,78",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "SkinnedModelRenderer",
+              "__guid": "3f295e63-a6d5-4010-a425-ecca48ff2880",
+              "BodyGroups": 18446744073709551615,
+              "CreateBoneObjects": false,
+              "Model": "models/pirate_ship/pirate_ship.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ShipController",
+              "__guid": "c95e9929-e875-417c-b3bf-07cd4bd0593b",
+              "PlayerControlled": false,
+              "Rigidbody": {
+                "_type": "component",
+                "component_id": "0ee452b7-85d9-4c0a-97ce-6151109eae79",
+                "go": "48bdb15c-5e00-4d24-9b33-d5e294146df2",
+                "component_type": "Rigidbody"
+              },
+              "ShipSpeed": 160,
+              "TurningSpeed": 3,
+              "Wind": {
+                "_type": "component",
+                "component_id": "1fd66166-e948-4b4e-af4b-bbd88ab4d909",
+                "go": "3c098818-9b67-45bd-960a-ac4a6f6e60e3",
+                "component_type": "Wind"
+              }
+            },
+            {
+              "__type": "ModelCollider",
+              "__guid": "66ab409c-19d3-4708-b359-10f66eed0972",
+              "IsTrigger": false,
+              "Model": "models/pirate_ship/pirate_ship.vmdl",
+              "Static": false
+            },
+            {
+              "__type": "FloatingPoint",
+              "__guid": "bd698ba0-9f25-485d-8194-694fe1f08bb4",
+              "DensityModifier": 0.9,
+              "DrawSamplingDebug": false,
+              "Rigidbody": {
+                "_type": "component",
+                "component_id": "0ee452b7-85d9-4c0a-97ce-6151109eae79",
+                "go": "48bdb15c-5e00-4d24-9b33-d5e294146df2",
+                "component_type": "Rigidbody"
+              },
+              "SampleModifier": 0.5,
+              "SamplePoints": 500,
+              "UseAverageSamplePosition": false,
+              "Waves": {
+                "_type": "component",
+                "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
+                "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
+                "component_type": "Waves"
+              }
+            }
+          ]
         }
       ]
     },
@@ -233,6 +444,7 @@
       "__guid": "6ba753ed-76b9-4498-a8ff-63516876a9af",
       "Name": "Terrain",
       "Position": "-10000,-10000,-100",
+      "Tags": "solid",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -257,7 +469,7 @@
     {
       "__guid": "ef3d748e-e819-4845-9bbe-13f9bcdaf843",
       "Name": "Cube",
-      "Position": "-215.2769,635.87,587.9447",
+      "Position": "-215.2769,643.5328,587.9447",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -265,7 +477,7 @@
           "__type": "ModelRenderer",
           "__guid": "5e4f5e1c-6a14-478d-b0d2-6f58873b75e9",
           "BodyGroups": 18446744073709551615,
-          "Model": "models/dev/box.vmdl",
+          "Model": "models/bombercrate/bombercrate.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
         },
@@ -281,7 +493,7 @@
             "component_type": "Rigidbody"
           },
           "SampleModifier": 1,
-          "SamplePoints": 500,
+          "SamplePoints": 1000,
           "UseAverageSamplePosition": true,
           "Waves": {
             "_type": "component",
@@ -293,9 +505,9 @@
         {
           "__type": "Rigidbody",
           "__guid": "f1597ee8-90e1-4e95-9b91-cd2cc1349c9e",
-          "AngularDamping": 0.3,
+          "AngularDamping": 0.5,
           "Gravity": true,
-          "LinearDamping": 0.3,
+          "LinearDamping": 0.5,
           "Locking": {},
           "MassOverride": 0,
           "MotionEnabled": true,
@@ -303,11 +515,10 @@
           "StartAsleep": false
         },
         {
-          "__type": "BoxCollider",
-          "__guid": "42969a27-2a1a-4257-ab67-f4efce063f77",
-          "Center": "0,0,0",
+          "__type": "ModelCollider",
+          "__guid": "be3c644f-636f-4bf5-a908-82298f221d5a",
           "IsTrigger": false,
-          "Scale": "50,50,50",
+          "Model": "models/bombercrate/bombercrate.vmdl",
           "Static": false
         }
       ]
@@ -472,6 +683,64 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "696efc8a-79b5-4a6e-9e2a-a896d64283e8",
+      "Name": "Cube",
+      "Position": "55.64358,671.1014,718.8989",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "4600d2e1-8e28-421f-946e-576893821696",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "FloatingPoint",
+          "__guid": "1079ffc5-3baf-4b74-b145-ce6c6e62db87",
+          "DensityModifier": 3,
+          "DrawSamplingDebug": false,
+          "Rigidbody": {
+            "_type": "component",
+            "component_id": "e6da0e1f-cdb9-408c-8c4c-30536e749424",
+            "go": "696efc8a-79b5-4a6e-9e2a-a896d64283e8",
+            "component_type": "Rigidbody"
+          },
+          "SampleModifier": 1,
+          "SamplePoints": 500,
+          "UseAverageSamplePosition": true,
+          "Waves": {
+            "_type": "component",
+            "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
+            "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
+            "component_type": "Waves"
+          }
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "e6da0e1f-cdb9-408c-8c4c-30536e749424",
+          "AngularDamping": 0.3,
+          "Gravity": true,
+          "LinearDamping": 0.3,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "9a39d5ba-5ffd-4b8c-aab7-4a63f9e4f032",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -497,8 +766,10 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-23T14:30:48.3503984-03:00",
+  "LastSaved": "2024-03-24T12:35:27.3874658-03:00",
   "ResourceVersion": 1,
   "__version": 1,
-  "__references": []
+  "__references": [
+    "baik.s_crate"
+  ]
 }

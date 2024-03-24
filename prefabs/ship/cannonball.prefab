@@ -1,0 +1,73 @@
+{
+  "RootObject": {
+    "__guid": "88746bca-242e-4074-bf42-260d439c178f",
+    "Name": "cannonball",
+    "Scale": "0.15,0.15,0.15",
+    "Tags": "solid,projectile,particles",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "__guid": "a9827cee-478b-46d6-8afd-2e84839c3e91",
+        "BodyGroups": 18446744073709551615,
+        "MaterialOverride": "materials/dev/dev_metal_rough00.vmat",
+        "Model": "models/dev/sphere.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Rigidbody",
+        "__guid": "06dcd4c0-de7d-4705-9f31-37daa0ad6c26",
+        "AngularDamping": 0.5,
+        "Gravity": false,
+        "LinearDamping": 0.5,
+        "Locking": {},
+        "MassOverride": 10,
+        "MotionEnabled": true,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "Cannonball",
+        "__guid": "6689da68-c9cc-40bd-b920-9b353893fd8e",
+        "FalloffModifier": 1.5,
+        "Rigidbody": {
+          "_type": "component",
+          "component_id": "06dcd4c0-de7d-4705-9f31-37daa0ad6c26",
+          "go": "88746bca-242e-4074-bf42-260d439c178f",
+          "component_type": "Rigidbody"
+        }
+      },
+      {
+        "__type": "BoxCollider",
+        "__guid": "9fade1fc-60e8-42e9-932a-c89769d3ddb7",
+        "Center": "0,0,0",
+        "IsTrigger": false,
+        "Scale": "50,50,50",
+        "Static": false
+      },
+      {
+        "__type": "SpriteRenderer",
+        "__guid": "c2a576b8-e21f-4bed-a679-0d4244d0240c",
+        "Additive": false,
+        "CastShadows": false,
+        "Color": "1,1,1,1",
+        "DepthFeather": 0,
+        "FlipHorizontal": false,
+        "FlipVertical": false,
+        "FogStrength": 1,
+        "Opaque": false,
+        "Size": "10,10",
+        "Texture": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}
