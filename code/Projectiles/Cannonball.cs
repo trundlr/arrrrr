@@ -6,6 +6,7 @@ namespace Pirate.Projectiles;
 public sealed class Cannonball : Component, Component.ICollisionListener
 {
 	[Property] public required Rigidbody Rigidbody { get; set; }
+	[Property] public required GameObject ShipCollisionEmitter { get; set; }
 	[Property] public float FalloffModifier { get; set; } = 1f;
 
 	public void OnCollisionStart( Collision other )
@@ -28,7 +29,7 @@ public sealed class Cannonball : Component, Component.ICollisionListener
 
 	private void HandleShipCollision( CollisionSource source )
 	{
-		Log.Info( "omg i hit a ship" );
+		ShipCollisionEmitter.Clone( Transform.Position );
 		GameObject.Destroy();
 	}
 

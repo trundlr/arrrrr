@@ -37,6 +37,10 @@
           "component_id": "06dcd4c0-de7d-4705-9f31-37daa0ad6c26",
           "go": "88746bca-242e-4074-bf42-260d439c178f",
           "component_type": "Rigidbody"
+        },
+        "ShipCollisionEmitter": {
+          "_type": "gameobject",
+          "prefab": "prefabs/particles/cannonball_explosion.prefab"
         }
       },
       {
@@ -46,20 +50,6 @@
         "IsTrigger": false,
         "Scale": "50,50,50",
         "Static": false
-      },
-      {
-        "__type": "SpriteRenderer",
-        "__guid": "c2a576b8-e21f-4bed-a679-0d4244d0240c",
-        "Additive": false,
-        "CastShadows": false,
-        "Color": "1,1,1,1",
-        "DepthFeather": 0,
-        "FlipHorizontal": false,
-        "FlipVertical": false,
-        "FogStrength": 1,
-        "Opaque": false,
-        "Size": "10,10",
-        "Texture": null
       }
     ],
     "Children": []
