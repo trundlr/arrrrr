@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "88746bca-242e-4074-bf42-260d439c178f",
+    "__guid": "350c1d05-bac7-45ca-b0c9-d01072d15798",
     "Name": "cannonball",
     "Scale": "0.15,0.15,0.15",
     "Tags": "solid,projectile,particles",
@@ -9,7 +9,7 @@
     "Components": [
       {
         "__type": "ModelRenderer",
-        "__guid": "a9827cee-478b-46d6-8afd-2e84839c3e91",
+        "__guid": "2c44b1b8-3d8b-4a94-87bc-c9e2bbdbbbc3",
         "BodyGroups": 18446744073709551615,
         "MaterialOverride": "materials/dev/dev_metal_rough00.vmat",
         "Model": "models/dev/sphere.vmdl",
@@ -18,7 +18,7 @@
       },
       {
         "__type": "Rigidbody",
-        "__guid": "06dcd4c0-de7d-4705-9f31-37daa0ad6c26",
+        "__guid": "4d39686f-96a2-43f5-8198-fe6bdead0b16",
         "AngularDamping": 0.5,
         "Gravity": false,
         "LinearDamping": 0.5,
@@ -30,12 +30,18 @@
       },
       {
         "__type": "Cannonball",
-        "__guid": "6689da68-c9cc-40bd-b920-9b353893fd8e",
+        "__guid": "7114e36e-328f-4ffa-a588-5695e33dd04c",
         "FalloffModifier": 1.5,
+        "Model": {
+          "_type": "component",
+          "component_id": "2c44b1b8-3d8b-4a94-87bc-c9e2bbdbbbc3",
+          "go": "350c1d05-bac7-45ca-b0c9-d01072d15798",
+          "component_type": "ModelRenderer"
+        },
         "Rigidbody": {
           "_type": "component",
-          "component_id": "06dcd4c0-de7d-4705-9f31-37daa0ad6c26",
-          "go": "88746bca-242e-4074-bf42-260d439c178f",
+          "component_id": "4d39686f-96a2-43f5-8198-fe6bdead0b16",
+          "go": "350c1d05-bac7-45ca-b0c9-d01072d15798",
           "component_type": "Rigidbody"
         },
         "ShipCollisionEmitter": {
@@ -45,7 +51,7 @@
       },
       {
         "__type": "BoxCollider",
-        "__guid": "9fade1fc-60e8-42e9-932a-c89769d3ddb7",
+        "__guid": "9fa679a0-91b4-4e31-a7ef-ebea99c99b98",
         "Center": "0,0,0",
         "IsTrigger": false,
         "Scale": "50,50,50",

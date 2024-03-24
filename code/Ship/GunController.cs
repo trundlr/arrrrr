@@ -35,7 +35,9 @@ public class GunController : Component
 
 		Sound.Play( "cannon_fire", sourcePos );
 
-		rigidbody.ApplyImpulse( fireRotation.Forward * Force * rigidbody.PhysicsBody.Mass );
+		var forceMod = Game.Random.Float( 0.8f, 1.2f );
+
+		rigidbody.ApplyImpulse( fireRotation.Forward * Force * forceMod * rigidbody.PhysicsBody.Mass );
 	}
 
 	protected override void DrawGizmos()

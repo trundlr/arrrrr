@@ -6,9 +6,15 @@ namespace Pirate.Projectiles;
 [Title( "Projectiles - Cannonball" ), Category( "Pirates" )]
 public sealed class Cannonball : Component, Component.ICollisionListener
 {
+	private const float DestructionTime = 3f;
+
 	[Property] public required Rigidbody Rigidbody { get; set; }
 	[Property] public required GameObject ShipCollisionEmitter { get; set; }
+	[Property] public required ModelRenderer Model { get; set; }
 	[Property] public float FalloffModifier { get; set; } = 1f;
+
+	private TimeUntil TimeUntilDestruction { get; set; }
+	private bool QueuedForDestruction { get; set; }
 
 	public void OnCollisionStart( Collision other )
 	{
@@ -42,13 +48,33 @@ public sealed class Cannonball : Component, Component.ICollisionListener
 	private void HandleSolidCollision( Collision source )
 	{
 		Log.Info( "omg i hit solid ground" );
+		if ( source.Contact.Point.z > 0f )
+		{
+			TimeUntilDestruction = DestructionTime;
+			QueuedForDestruction = true;
+			return;
+		}
+
 		GameObject.Destroy();
 	}
 
 	private void HandleWaterCollision( Collision source )
 	{
-		Log.Info( "omg i hit water" );
-		// play a sound and particle
+		Sound.Play( "water_splash", source.Contact.Point );
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if ( TimeUntilDestruction > 0f )
+		{
+			var tintAlpha = TimeUntilDestruction / DestructionTime;
+			Model.Tint = Model.Tint.WithAlpha( tintAlpha );
+		}
+
+		if ( QueuedForDestruction && TimeUntilDestruction < 0f )
+			GameObject.Destroy();
 	}
 
 	protected override void OnFixedUpdate()
