@@ -9,18 +9,56 @@ public sealed class ShipController : Component
 	[Property] public float ShipSpeed { get; set; } = 20f;
 	[Property] public float TurningSpeed { get; set; } = 3f;
 	[Property] public bool PlayerControlled { get; set; } = false;
+	[Property] public ModelRenderer? Model { get; set; }
 	[Property] public required Rigidbody Rigidbody { get; set; }
 	[Property] public required Wind Wind { get; set; }
 	[Property] public required GunController Guns { get; set; }
+	[Property] public GameObject? FishingRodPrefab { get; set; }
 
 	public bool AnchorDropped { get; set; }
 	public bool Fishing { get; set; }
+
+	private GameObject? FishingRod { get; set; }
+	private Vector3 FishingMountLeft { get; set; }
+	private Vector3 FishingMountRight { get; set; }
+	private Vector3 FishingMountLeftWorld => Transform.World.PointToWorld( FishingMountLeft );
+	private Vector3 FishingMountRightWorld => Transform.World.PointToWorld( FishingMountRight );
+
+	protected override void OnStart()
+	{
+		if ( Model is null )
+			return;
+
+		FishingRod = FishingRodPrefab?.Clone();
+		if ( FishingRod is not null )
+		{
+			FishingRod.Parent = GameObject;
+			FishingRod.Enabled = false;
+		}
+
+
+		var fishingAttachmentL = Model.Model.GetAttachment( "fishing_mount_L" );
+		if ( fishingAttachmentL is not null )
+		{
+			FishingMountLeft = fishingAttachmentL.Value.Position;
+		}
+
+		var fishingAttachmentR = Model.Model.GetAttachment( "fishing_mount_R" );
+		if ( fishingAttachmentR is not null )
+		{
+			FishingMountRight = fishingAttachmentR.Value.Position;
+		}
+	}
 
 	protected override void OnUpdate()
 	{
 		if ( Input.Pressed( "toggle_anchor" ) )
 		{
 			ToggleAnchor();
+		}
+
+		if ( Fishing )
+		{
 		}
 	}
 
@@ -77,6 +115,52 @@ public sealed class ShipController : Component
 		return fishingSpot.Transform.Position.Distance( Transform.Position ) < 250f;
 	}
 
+	public void StartFishing( FishingSpot spot )
+	{
+		Fishing = true;
+		DeployFishingApparatus( spot );
+	}
+
+	public void StopFishing()
+	{
+		Fishing = false;
+		HideFishingApparatus();
+	}
+
+	private void DeployFishingApparatus( FishingSpot spot )
+	{
+		if ( FishingRod is null )
+			return;
+
+		FishingRod.Enabled = true;
+
+		if ( GetShipFishingSide( spot.Transform.Position ) is ShipSide.Left )
+		{
+			FishingRod.Transform.Position = FishingMountLeftWorld;
+			FishingRod.Transform.LocalRotation = new Angles( 0f, 0f, -75f ).ToRotation();
+		}
+		else
+		{
+			FishingRod.Transform.Position = FishingMountRightWorld;
+			FishingRod.Transform.LocalRotation = new Angles( 0f, 180f, -75f ).ToRotation();
+		}
+	}
+
+	private void HideFishingApparatus()
+	{
+		if ( FishingRod is null )
+			return;
+
+		FishingRod.Enabled = false;
+	}
+
+	private ShipSide GetShipFishingSide( Vector3 target )
+	{
+		return FishingMountLeftWorld.Distance( target ) < FishingMountRightWorld.Distance( target )
+			? ShipSide.Left
+			: ShipSide.Right;
+	}
+
 	protected override void DrawGizmos()
 	{
 		base.DrawGizmos();
@@ -90,5 +174,11 @@ public sealed class ShipController : Component
 		Gizmo.Draw.Arrow( Transform.Position + up, Transform.Position + new Vector3( Wind.WindDirection ) + up,
 			100f,
 			10f );
+	}
+
+	private enum ShipSide
+	{
+		Left,
+		Right
 	}
 }

@@ -1,0 +1,27 @@
+{
+  "RootObject": {
+    "__guid": "2794c9ad-60ad-433d-a2a3-a3c31ed3130d",
+    "Name": "Fishing Rod",
+    "Scale": "2,2,0.5",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "__guid": "0ea31ee9-2a54-476d-a768-ce4fa8f2c92c",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/tools/better_fishingrod.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": [
+    "fish.better_fishingrod"
+  ]
+}

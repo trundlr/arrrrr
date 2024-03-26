@@ -120,7 +120,7 @@
     {
       "__guid": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
       "Name": "Root (Pivot)",
-      "Position": "98.1414,100.8139,-57.72282",
+      "Position": "98.38144,128.3346,-57.72282",
       "Rotation": "0,0,-0.7071068,0.7071068",
       "Tags": "solid,ship",
       "Enabled": true,
@@ -159,11 +159,21 @@
             {
               "__type": "ShipController",
               "__guid": "aa3e82ed-4f15-4b5e-8919-c241bbafedbc",
+              "FishingRodPrefab": {
+                "_type": "gameobject",
+                "prefab": "prefabs/ship/fishing_rod.prefab"
+              },
               "Guns": {
                 "_type": "component",
                 "component_id": "f2035fbd-4ed5-4660-a75a-634e85768a97",
                 "go": "40907fe7-6b22-4e97-8f60-3ac626f589f3",
                 "component_type": "GunController"
+              },
+              "Model": {
+                "_type": "component",
+                "component_id": "8aaecf49-2cf8-4fc9-a3ca-53d876f5d1a4",
+                "go": "40907fe7-6b22-4e97-8f60-3ac626f589f3",
+                "component_type": "SkinnedModelRenderer"
               },
               "PlayerControlled": true,
               "Rigidbody": {
@@ -950,7 +960,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-24T17:00:02.6217899-03:00",
+  "LastSaved": "2024-03-26T13:51:49.3908945-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [

@@ -51,18 +51,18 @@
             {
                 if (Ship.CanFish(FishingSpot))
                 {
-                    Ship.Fishing = true;
+                    Ship.StartFishing(FishingSpot);
                 }
             }
             else
             {
-                Ship.Fishing = false;
+                Ship.StopFishing();
                 TimeUntilTextAppears = 0.13f;
             }
         }
 
         if (Ship.Fishing && !Ship.CanFish(FishingSpot))
-            Ship.Fishing = false;
+            Ship.StopFishing();
     }
 
     protected override int BuildHash()
