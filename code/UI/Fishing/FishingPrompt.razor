@@ -5,23 +5,68 @@
 @inherits PanelComponent
 
 <root>
-    <div class="prompt @ShouldShow()">
-        Press F to fish
+    <div class="prompt @ShouldShowPrompt()">
+        <i>phishing</i>
+        @if (!Ship.Fishing)
+        {
+            <div class="prompt-text @ShouldShowText()">
+                Press
+                <InputGlyph button="fish" size="small" variant="light"/>
+                to fish
+            </div>
+        }
     </div>
 </root>
 
 @code
 {
-    [Property] public required FishingSpot FishingSpot { get; set; }
-    [Property] public required ShipController Ship { get; set; }
+    [Property]
+    public required FishingSpot FishingSpot { get; set; }
 
-    private string ShouldShow()
+    [Property]
+    public required ShipController Ship { get; set; }
+
+    private TimeUntil TimeUntilTextAppears { get; set; }
+
+    private string ShouldShowPrompt()
     {
-        return Ship.Fishing || !Ship.CanFish(FishingSpot) ? "" : "show";
+        var classes = "";
+        if (Ship.Fishing || Ship.CanFish(FishingSpot)) classes += "show ";
+        if (Ship.Fishing) classes += "fishing ";
+        return classes;
+    }
+
+    private string ShouldShowText()
+    {
+        return TimeUntilTextAppears < 0f ? "show" : "";
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (Input.Pressed("fish"))
+        {
+            if (!Ship.Fishing)
+            {
+                if (Ship.CanFish(FishingSpot))
+                {
+                    Ship.Fishing = true;
+                }
+            }
+            else
+            {
+                Ship.Fishing = false;
+                TimeUntilTextAppears = 0.13f;
+            }
+        }
+
+        if (Ship.Fishing && !Ship.CanFish(FishingSpot))
+            Ship.Fishing = false;
     }
 
     protected override int BuildHash()
     {
-        return HashCode.Combine(Ship.Fishing, Ship.CanFish(FishingSpot));
+        return HashCode.Combine(Ship.Fishing, Ship.CanFish(FishingSpot), TimeUntilTextAppears < 0f);
     }
 }

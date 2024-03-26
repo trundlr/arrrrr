@@ -6,6 +6,7 @@ FishingPrompt {
 
     > .prompt {
         margin: auto 120px 80px auto;
+        align-items: center;
         font-family: $font-family;
         font-size: 32px;
         font-weight: bold;
@@ -13,11 +14,38 @@ FishingPrompt {
         border-radius: $border-radius-lg;
         color: $font-light;
         padding: $padding-lg;
+        width: 300px;
+        height: 72px;
         transform: translateX(800px);
-        transition: transform 0.15s ease-in;
+        transition: transform 0.3s ease-in;
+        transition: width 0.15s ease-in;
+        gap: 12px;
+        text-overflow: ellipsis;
+
+        &:active {
+            transition: width 0s;
+        }
+
+        > .prompt-text {
+            gap: 8px;
+            align-items: center;
+            opacity: 0;
+
+            &.show {
+                opacity: 1;
+            }
+        }
+
+        > i {
+            font-size: 38px;
+        }
 
         &.show {
             transform: translateX(0px);
+        }
+
+        &.fishing {
+            width: 72px;
         }
     }
 }

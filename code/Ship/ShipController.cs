@@ -50,12 +50,6 @@ public sealed class ShipController : Component
 			{
 				Guns.Fire();
 			}
-
-			if ( Input.Pressed( "fish" ) )
-			{
-				Fishing = !Fishing;
-				AnchorDropped = Fishing;
-			}
 		}
 
 		var rot = PlayerControlled
