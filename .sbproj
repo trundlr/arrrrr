@@ -10,7 +10,9 @@
   "Resources": null,
   "HasCode": true,
   "CodePath": "/code/",
-  "PackageReferences": [],
+  "PackageReferences": [
+    "alex.iconify"
+  ],
   "EditorReferences": null,
   "Metadata": {
     "MaxPlayers": 64,
