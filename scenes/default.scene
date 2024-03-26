@@ -64,9 +64,9 @@
         {
           "__type": "Water",
           "__guid": "f415b7aa-683b-423e-9936-c506483f495d",
-          "EdgeLength": 100,
+          "EdgeLength": 125,
           "Material": "materials/other_water.vmat",
-          "Resolution": 200
+          "Resolution": 100
         },
         {
           "__type": "PlaneCollider",
@@ -120,7 +120,7 @@
     {
       "__guid": "f0a34ae3-cf67-49b2-a59f-df4d704aa174",
       "Name": "Root (Pivot)",
-      "Position": "98.38144,128.3346,-57.72282",
+      "Position": "98.38164,439.5773,-57.72282",
       "Rotation": "0,0,-0.7071068,0.7071068",
       "Tags": "solid,ship",
       "Enabled": true,
@@ -142,7 +142,7 @@
       "Children": [
         {
           "__guid": "40907fe7-6b22-4e97-8f60-3ac626f589f3",
-          "Name": "Ship",
+          "Name": "Hull",
           "Position": "0,0,78",
           "Enabled": true,
           "NetworkMode": 2,
@@ -258,6 +258,67 @@
                 "prefab": "prefabs/ship/cannonball.prefab"
               }
             }
+          ],
+          "Children": [
+            {
+              "__guid": "ce09518a-401a-46da-8fc9-6667025ab01d",
+              "Name": "Mast",
+              "Position": "-0.00006103514,0.0001678467,0",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "Components": [
+                {
+                  "__type": "Rigidbody",
+                  "__guid": "4261d5b4-d744-496b-9037-4fb5048d6ab6",
+                  "__enabled": false,
+                  "AngularDamping": 0.5,
+                  "Gravity": true,
+                  "LinearDamping": 0.5,
+                  "Locking": {},
+                  "MassOverride": 0,
+                  "MotionEnabled": true,
+                  "RigidbodyFlags": 0,
+                  "StartAsleep": false
+                },
+                {
+                  "__type": "FloatingPoint",
+                  "__guid": "26a788e9-3345-40e8-9800-3347c8f0c9e7",
+                  "__enabled": false,
+                  "DensityModifier": 5,
+                  "DrawSamplingDebug": true,
+                  "Rigidbody": {
+                    "_type": "component",
+                    "component_id": "4261d5b4-d744-496b-9037-4fb5048d6ab6",
+                    "go": "ce09518a-401a-46da-8fc9-6667025ab01d",
+                    "component_type": "Rigidbody"
+                  },
+                  "SampleModifier": 1,
+                  "SamplePoints": 300,
+                  "UseAverageSamplePosition": true,
+                  "Waves": {
+                    "_type": "component",
+                    "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
+                    "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
+                    "component_type": "Waves"
+                  }
+                },
+                {
+                  "__type": "ModelRenderer",
+                  "__guid": "485568ee-41b8-470b-8a73-eb9f8108e956",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/pirate_ship/mast.vmdl",
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1"
+                },
+                {
+                  "__type": "ModelCollider",
+                  "__guid": "0fffdb01-23b4-4439-9dd9-3517a5010cf4",
+                  "IsTrigger": false,
+                  "Model": "models/pirate_ship/mast.vmdl",
+                  "Static": false
+                }
+              ]
+            }
           ]
         },
         {
@@ -290,7 +351,7 @@
         {
           "__guid": "59d5cee6-ef98-4f7b-91b6-b94ea700c3b1",
           "Name": "Camera Target",
-          "Position": "115.2232,0,98.62769",
+          "Position": "0,0,98.62769",
           "Enabled": true,
           "NetworkMode": 2
         },
@@ -304,56 +365,56 @@
             {
               "__guid": "aa5245fc-822b-4647-990f-020240964cf7",
               "Name": "1",
-              "Position": "7.009673,-86.32488,80.63979",
-              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Position": "-106.8625,-90.62711,87.01379",
+              "Rotation": "-0.1138441,-0.09445693,-0.7355667,0.6611044",
               "Enabled": true,
               "NetworkMode": 2
             },
             {
               "__guid": "926e6d0a-8463-4714-a75b-0f4f4fb477f0",
               "Name": "2",
-              "Position": "42.56132,-94.54398,74.6411",
-              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Position": "-71.31113,-98.84622,81.01511",
+              "Rotation": "-0.1138441,-0.09445693,-0.7355667,0.6611044",
               "Enabled": true,
               "NetworkMode": 2
             },
             {
               "__guid": "e8d45c44-f2f7-472b-833c-dab498d775bd",
               "Name": "3",
-              "Position": "79.36474,-100.1759,74.4922",
-              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Position": "-34.50763,-104.4782,80.86622",
+              "Rotation": "-0.1138441,-0.09445693,-0.7355667,0.6611044",
               "Enabled": true,
               "NetworkMode": 2
             },
             {
               "__guid": "0b7d8f1d-f439-4662-bb36-18635b0a78ae",
               "Name": "4",
-              "Position": "114.4315,-102.2076,73.77129",
-              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Position": "0.5591061,-106.5099,80.14531",
+              "Rotation": "-0.1138441,-0.09445693,-0.7355667,0.6611044",
               "Enabled": true,
               "NetworkMode": 2
             },
             {
               "__guid": "4670c788-6256-4b61-963d-639534fa861e",
               "Name": "5",
-              "Position": "154.2187,-100.6778,72.28738",
-              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Position": "40.34627,-104.9801,78.66139",
+              "Rotation": "-0.1138441,-0.09445693,-0.7355667,0.6611044",
               "Enabled": true,
               "NetworkMode": 2
             },
             {
               "__guid": "8438baea-a29c-4d57-bc33-7d1ad3bde545",
               "Name": "6",
-              "Position": "188.9286,-96.04745,70.42056",
-              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Position": "75.05617,-100.3498,76.79457",
+              "Rotation": "-0.1138441,-0.09445693,-0.7355667,0.6611044",
               "Enabled": true,
               "NetworkMode": 2
             },
             {
               "__guid": "13d9f5fb-e732-4421-af00-16225a36744d",
               "Name": "7",
-              "Position": "223.5989,-81.63108,66.85562",
-              "Rotation": "-0.1138441,-0.09445691,-0.7355667,0.6611043",
+              "Position": "109.7265,-85.93343,73.22963",
+              "Rotation": "-0.1138441,-0.09445693,-0.7355667,0.6611044",
               "Enabled": true,
               "NetworkMode": 2
             }
@@ -960,7 +1021,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-26T13:51:49.3908945-03:00",
+  "LastSaved": "2024-03-26T16:08:05.5327091-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [

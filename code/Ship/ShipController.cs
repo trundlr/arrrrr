@@ -57,6 +57,17 @@ public sealed class ShipController : Component
 			ToggleAnchor();
 		}
 
+		if ( Input.Pressed( "destroy_ship" ) )
+		{
+			var mast = GameObject.Children.FirstOrDefault( c => c.Name == "Mast" );
+			if ( mast is null )
+				return;
+			mast.Parent = Scene;
+			mast.Transform.Position = Transform.Position;
+			mast.Components.Get<Rigidbody>( true ).Enabled = true;
+			mast.Components.Get<FloatingPoint>( true ).Enabled = true;
+		}
+
 		if ( Fishing )
 		{
 		}
