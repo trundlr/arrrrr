@@ -284,7 +284,7 @@
                   "__type": "FloatingPoint",
                   "__guid": "26a788e9-3345-40e8-9800-3347c8f0c9e7",
                   "__enabled": false,
-                  "DensityModifier": 5,
+                  "DensityModifier": 4.5,
                   "DrawSamplingDebug": true,
                   "Rigidbody": {
                     "_type": "component",
@@ -294,7 +294,7 @@
                   },
                   "SampleModifier": 1,
                   "SamplePoints": 300,
-                  "UseAverageSamplePosition": true,
+                  "UseAverageSamplePosition": false,
                   "Waves": {
                     "_type": "component",
                     "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
@@ -1021,7 +1021,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-26T16:08:05.5327091-03:00",
+  "LastSaved": "2024-03-27T23:54:35.7351389-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [

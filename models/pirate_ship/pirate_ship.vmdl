@@ -44,12 +44,28 @@
 				children = 
 				[
 					{
-						_class = "PhysicsHullFromRender"
+						_class = "PhysicsHullFile"
+						name = "pirate_ship_hull"
 						parent_bone = ""
-						surface_prop = "wood"
+						surface_prop = "default"
 						collision_tags = "solid"
-						faceMergeAngle = 20.0
-						maxHullVertices = 32
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, -9.0 ]
+						offset_angles = [ 0.0, 90.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/pirate_ship/pirate_ship_hull.fbx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "HullPerMesh"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
 					},
 				]
 			},
