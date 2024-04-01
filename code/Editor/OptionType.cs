@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Editor;
 using Sandbox;
@@ -47,21 +48,49 @@ public record class ActionOption(
 
 		foreach ( var entry in CreateAsset.BuiltIn )
 		{
-			// options.Add( new ActionOption(
-			// 	OptionType.Action,
-			// 	"Action",
-			// 	
-			// 	) );
+			var asset = AssetType.Find( entry.Name );
+
+			if ( entry.Name == "Particles" )
+			{
+				asset = AssetType.ParticleSystem;
+			}
+
+			if ( asset is null )
+			{
+				Log.Warning( $"{entry.Name} is null" );
+				continue;
+			}
+
+			options.Add(
+				new ActionOption( OptionType.Action, $"New {asset.FriendlyName}..", "Action", asset.Icon64, () =>
+				{
+					var extension = Path.GetExtension( entry.Default ).Trim( '.' );
+
+					var fd = new FileDialog( null );
+					fd.Title = $"Create {entry.Name}";
+					fd.Directory = Project.Current.Path;
+					fd.DefaultSuffix = $".{extension}";
+					fd.SelectFile( $"untitled.{extension}" );
+					fd.SetFindFile();
+					fd.SetModeSave();
+					fd.SetNameFilter( $"{entry.Name} (*.{extension})" );
+
+					if ( !fd.Execute() )
+						return;
+
+					CreateAsset.Create( entry, fd.SelectedFile );
+				} ) );
 		}
 
 		foreach ( var gameResource in EditorTypeLibrary.GetAttributes<GameResourceAttribute>().OrderBy( x => x.Name ) )
 		{
-			Action<string> createResource = s =>
+			void CreateResource( string s )
 			{
 				var asset = AssetSystem.CreateResource( gameResource.Extension, s );
-				// MainAssetBrowser.Instance?.FocusOnAsset( asset );
-				// EditorUtility.InspectorObject = asset;
-			};
+				MainAssetBrowser.Instance?.UpdateAssetList();
+				MainAssetBrowser.Instance?.FocusOnAsset( asset );
+				EditorUtility.InspectorObject = asset;
+			}
 
 			var asset = AssetType.FromType( gameResource.TargetType );
 
@@ -84,9 +113,7 @@ public record class ActionOption(
 					if ( !fd.Execute() )
 						return;
 
-					Log.Info( "executed" );
-
-					createResource( fd.SelectedFile );
+					CreateResource( fd.SelectedFile );
 				}
 			) );
 		}

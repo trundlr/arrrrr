@@ -26,14 +26,7 @@ public class QuickSwitcherWindow : PopupWidget
 		SearchBar.FixedHeight = 32;
 		SearchBar.Focus();
 
-		SearchBar.ReturnPressed += () =>
-		{
-			SearchBar.Blur();
-			if ( List is not null && List.Items.Any() )
-			{
-				Selected = List.Items.First() as Option;
-			}
-		};
+		SearchBar.ReturnPressed += () => SearchBar.Blur();
 		SearchBar.SearchBlurred += SearchBarOnSearchBlurred;
 		SearchBar.TextChanged += _ => SetListItems();
 
@@ -53,7 +46,7 @@ public class QuickSwitcherWindow : PopupWidget
 	public string Filter { get; set; }
 	private OptionType FilterType { get; set; } = OptionType.All;
 	private Option Selected { get; set; }
-	private int SelectedIndex { get; set; }
+	private int SelectedIndex { get; }
 
 	private SearchBar SearchBar { get; }
 	private ListView List { get; set; }
@@ -63,14 +56,18 @@ public class QuickSwitcherWindow : PopupWidget
 
 	private void SearchBarOnSearchBlurred()
 	{
-		Log.Info( "blurred!!" );
+		List.Focus();
+		if ( !List.Items.Any() ) return;
+		var selection = new SelectionSystem();
+		selection.Add( List.Items.First() );
+		List.Selection = selection;
 	}
 
 	private void SetListItems()
 	{
 		List<Option> options = new();
 
-		Log.Info( $"Setting list items with filter type: {FilterType}" );
+		Log.Trace( $"Setting list items with filter type: {FilterType}" );
 
 		//
 		// Assets
@@ -89,36 +86,6 @@ public class QuickSwitcherWindow : PopupWidget
 		if ( FilterType is OptionType.Action or OptionType.All )
 		{
 			options.AddRange( ActionOption.All() );
-
-			foreach ( var entry in CreateAsset.BuiltIn )
-			{
-				var asset = AssetType.Find( entry.Name );
-				if ( asset is null )
-				{
-					Log.Info( $"{entry.Name} is null" );
-					continue;
-				}
-
-				options.Add(
-					new ActionOption( OptionType.Action, $"New {asset.FriendlyName}..", "Action", asset.Icon64, () =>
-					{
-						var extension = Path.GetExtension( entry.Default ).Trim( '.' );
-
-						var fd = new FileDialog( null );
-						fd.Title = $"Create {entry.Name}";
-						fd.Directory = "";
-						fd.DefaultSuffix = $".{extension}";
-						fd.SelectFile( $"untitled.{extension}" );
-						fd.SetFindFile();
-						fd.SetModeSave();
-						fd.SetNameFilter( $"{entry.Name} (*.{extension})" );
-
-						if ( !fd.Execute() )
-							return;
-
-						CreateAsset.Create( entry, fd.SelectedFile );
-					} ) );
-			}
 		}
 
 		if ( !string.IsNullOrEmpty( Filter ) )
@@ -140,6 +107,20 @@ public class QuickSwitcherWindow : PopupWidget
 		List.ItemSize = new Vector2( 0, 24 );
 		List.ItemPaint = PaintListMode;
 		List.ItemSpacing = 0;
+		List.ItemClicked = o =>
+		{
+			if ( o is Option opt )
+			{
+				HandleOption( opt );
+			}
+		};
+		List.ItemActivated = o =>
+		{
+			if ( o is Option opt )
+			{
+				HandleOption( opt );
+			}
+		};
 
 		canvas.Layout.Add( List );
 
@@ -153,7 +134,34 @@ public class QuickSwitcherWindow : PopupWidget
 
 		var itemRect = item.Rect;
 
-		PaintItem( option, itemRect );
+		if ( Paint.HasSelected || Paint.HasPressed )
+		{
+			Selected = option;
+
+			Paint.SetPen( Paint.HasPressed ? Theme.Green : Theme.Primary, 2, PenStyle.Dash );
+			Paint.ClearBrush();
+			Paint.DrawRect( itemRect.Shrink( 1 ), 3 );
+
+			Paint.ClearPen();
+			Paint.SetBrush( Paint.HasPressed ? Theme.Green.WithAlpha( 0.4f ) : Theme.Primary.WithAlpha( 0.4f ) );
+			Paint.DrawRect( itemRect.Shrink( 0 ), 3 );
+
+			Paint.SetPen( Theme.White );
+		}
+		else if ( Paint.HasMouseOver )
+		{
+			Paint.ClearPen();
+			Paint.SetBrush( Theme.Blue.Darken( 0.7f ).Desaturate( 0.3f ).WithAlpha( 0.5f ) );
+			Paint.DrawRect( itemRect );
+			Paint.SetPen( Theme.White );
+		}
+		else
+		{
+			Paint.ClearPen();
+			Paint.SetBrush( option.Type.GetColor().WithAlpha( 0.05f ) );
+			Paint.DrawRect( itemRect );
+			Paint.SetPen( Theme.White );
+		}
 
 		itemRect = itemRect.Shrink( 0, 0, 16, 0 );
 
@@ -190,47 +198,8 @@ public class QuickSwitcherWindow : PopupWidget
 		Paint.Draw( ir, icon );
 	}
 
-	private void PaintItem( Option option, Rect itemRect )
-	{
-		if ( List.Items.ElementAt( SelectedIndex ) as Option == option || Paint.HasSelected || Paint.HasPressed )
-		{
-			Selected = option;
-
-			Paint.SetPen( Paint.HasPressed ? Theme.Green : Theme.Primary, 2, PenStyle.Dash );
-			Paint.ClearBrush();
-			Paint.DrawRect( itemRect.Shrink( 1 ), 3 );
-
-			Paint.ClearPen();
-			Paint.SetBrush( Paint.HasPressed ? Theme.Green.WithAlpha( 0.4f ) : Theme.Primary.WithAlpha( 0.4f ) );
-			Paint.DrawRect( itemRect.Shrink( 0 ), 3 );
-
-			Paint.SetPen( Theme.White );
-
-			if ( Paint.HasPressed )
-			{
-				HandleOption( option );
-			}
-		}
-		else if ( Paint.HasMouseOver )
-		{
-			Paint.ClearPen();
-			Paint.SetBrush( Theme.Blue.Darken( 0.7f ).Desaturate( 0.3f ).WithAlpha( 0.5f ) );
-			Paint.DrawRect( itemRect );
-			Paint.SetPen( Theme.White );
-		}
-		else
-		{
-			Paint.ClearPen();
-			Paint.SetBrush( option.Type.GetColor().WithAlpha( 0.05f ) );
-			Paint.DrawRect( itemRect );
-			Paint.SetPen( Theme.White );
-		}
-	}
-
 	private void OnToolBarOptionChanged( string selected )
 	{
-		SelectedIndex = 0;
-
 		if ( Enum.TryParse( selected, true, out OptionType type ) )
 		{
 			FilterType = type;
@@ -250,52 +219,10 @@ public class QuickSwitcherWindow : PopupWidget
 	{
 		if ( e.KeyboardModifiers.HasFlag( KeyboardModifiers.Ctrl ) && e.Key is KeyCode.K )
 			SearchBar.Focus();
-
-		switch ( e.Key )
-		{
-			case KeyCode.Up:
-				{
-					if ( SelectedIndex == 0 )
-					{
-						SelectedIndex = List.Items.Count() - 1;
-					}
-					else
-					{
-						SelectedIndex -= 1;
-					}
-
-					List.Update();
-					List.ScrollTo( List.Items.ElementAtOrDefault( SelectedIndex ) );
-					break;
-				}
-			case KeyCode.Down:
-				{
-					if ( SelectedIndex == List.Items.Count() - 1 )
-					{
-						SelectedIndex = 0;
-					}
-					else
-					{
-						SelectedIndex += 1;
-					}
-
-					List.Update();
-					List.ScrollTo( List.Items.ElementAtOrDefault( SelectedIndex ) );
-					break;
-				}
-			case KeyCode.Return:
-				{
-					if ( Selected != null )
-						HandleOption( Selected );
-					break;
-				}
-		}
 	}
 
 	private void HandleOption( Option option )
 	{
-		Log.Info( option );
-
 		switch ( option.Type )
 		{
 			case OptionType.Asset:
@@ -308,18 +235,19 @@ public class QuickSwitcherWindow : PopupWidget
 				if ( option is not ActionOption actionOption )
 					break;
 				actionOption.action.Invoke();
-				Log.Info( $"Do action: {option.Name}" );
 				break;
 			default:
 				Log.Warning( $"Unhandled option type: {option.Type}" );
 				break;
 		}
+
+		Close();
 	}
 
 	[Menu( "Editor", "Tools/Open Quick Switcher", "code", Shortcut = "Ctrl+K" )]
 	public static void ToggleQuickSwitcher()
 	{
-		Log.Info( "ToggleQuickSwitcher" );
+		Log.Trace( "ToggleQuickSwitcher" );
 		Instance?.Destroy();
 
 		Instance = new QuickSwitcherWindow();

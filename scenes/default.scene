@@ -31,7 +31,7 @@
           "__guid": "68bc07f7-2bab-4ea8-b462-efcdfe2d650c",
           "Target": {
             "_type": "gameobject",
-            "go": "59d5cee6-ef98-4f7b-91b6-b94ea700c3b1"
+            "go": "506bac16-f66b-4447-b679-f81142967c7e"
           }
         }
       ]
@@ -123,7 +123,6 @@
       "Position": "98.38164,439.5773,-57.72282",
       "Rotation": "0,0,-0.7071068,0.7071068",
       "Tags": "solid,ship",
-      "Enabled": true,
       "NetworkMode": 2,
       "Components": [
         {
@@ -417,96 +416,6 @@
               "Rotation": "-0.1138441,-0.09445693,-0.7355667,0.6611044",
               "Enabled": true,
               "NetworkMode": 2
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "__guid": "48bdb15c-5e00-4d24-9b33-d5e294146df2",
-      "Name": "Root (1)",
-      "Position": "-272.524,-147.7319,-57.72261",
-      "Rotation": "0,0,0.7071068,0.7071068",
-      "Tags": "solid,ship",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "Rigidbody",
-          "__guid": "0ee452b7-85d9-4c0a-97ce-6151109eae79",
-          "AngularDamping": 0.35,
-          "Gravity": true,
-          "LinearDamping": 0.65,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ],
-      "Children": [
-        {
-          "__guid": "bd57d345-7fdd-4034-bb95-39e499d9ae00",
-          "Name": "Ship",
-          "Position": "0,0,78",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "Components": [
-            {
-              "__type": "SkinnedModelRenderer",
-              "__guid": "3f295e63-a6d5-4010-a425-ecca48ff2880",
-              "BodyGroups": 18446744073709551615,
-              "CreateBoneObjects": false,
-              "Model": "models/pirate_ship/pirate_ship.vmdl",
-              "RenderType": "On",
-              "Tint": "1,1,1,1"
-            },
-            {
-              "__type": "ShipController",
-              "__guid": "c95e9929-e875-417c-b3bf-07cd4bd0593b",
-              "PlayerControlled": false,
-              "Rigidbody": {
-                "_type": "component",
-                "component_id": "0ee452b7-85d9-4c0a-97ce-6151109eae79",
-                "go": "48bdb15c-5e00-4d24-9b33-d5e294146df2",
-                "component_type": "Rigidbody"
-              },
-              "ShipSpeed": 160,
-              "TurningSpeed": 3,
-              "Wind": {
-                "_type": "component",
-                "component_id": "1fd66166-e948-4b4e-af4b-bbd88ab4d909",
-                "go": "3c098818-9b67-45bd-960a-ac4a6f6e60e3",
-                "component_type": "Wind"
-              }
-            },
-            {
-              "__type": "ModelCollider",
-              "__guid": "66ab409c-19d3-4708-b359-10f66eed0972",
-              "IsTrigger": false,
-              "Model": "models/pirate_ship/pirate_ship.vmdl",
-              "Static": false
-            },
-            {
-              "__type": "FloatingPoint",
-              "__guid": "bd698ba0-9f25-485d-8194-694fe1f08bb4",
-              "DensityModifier": 0.9,
-              "DrawSamplingDebug": false,
-              "Rigidbody": {
-                "_type": "component",
-                "component_id": "0ee452b7-85d9-4c0a-97ce-6151109eae79",
-                "go": "48bdb15c-5e00-4d24-9b33-d5e294146df2",
-                "component_type": "Rigidbody"
-              },
-              "SampleModifier": 0.5,
-              "SamplePoints": 500,
-              "UseAverageSamplePosition": false,
-              "Waves": {
-                "_type": "component",
-                "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
-                "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
-                "component_type": "Waves"
-              }
             }
           ]
         }
@@ -980,8 +889,8 @@
               },
               "Ship": {
                 "_type": "component",
-                "component_id": "aa3e82ed-4f15-4b5e-8919-c241bbafedbc",
-                "go": "40907fe7-6b22-4e97-8f60-3ac626f589f3",
+                "component_id": "b1ba876a-91f5-4974-b97d-c3558782a6c0",
+                "go": "506bac16-f66b-4447-b679-f81142967c7e",
                 "component_type": "ShipController"
               }
             },
@@ -992,6 +901,188 @@
               "Opacity": 1,
               "Scale": 1,
               "ZIndex": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "506bac16-f66b-4447-b679-f81142967c7e",
+      "Name": "Sloop",
+      "Position": "0,0,17.4182",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "ad2a3703-10af-4a58-9554-c7c112834759",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/ships/sloop/sloop.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ShipController",
+          "__guid": "b1ba876a-91f5-4974-b97d-c3558782a6c0",
+          "Guns": {
+            "_type": "component",
+            "component_id": "c9bb5a18-3964-40ae-8097-d070201516bb",
+            "go": "506bac16-f66b-4447-b679-f81142967c7e",
+            "component_type": "GunController"
+          },
+          "Model": {
+            "_type": "component",
+            "component_id": "ad2a3703-10af-4a58-9554-c7c112834759",
+            "go": "506bac16-f66b-4447-b679-f81142967c7e",
+            "component_type": "ModelRenderer"
+          },
+          "PlayerControlled": true,
+          "Rigidbody": {
+            "_type": "component",
+            "component_id": "b746cd62-727a-4913-ac43-9734beba5e37",
+            "go": "506bac16-f66b-4447-b679-f81142967c7e",
+            "component_type": "Rigidbody"
+          },
+          "ShipSpeed": 120,
+          "TurningSpeed": 3,
+          "Wind": {
+            "_type": "component",
+            "component_id": "1fd66166-e948-4b4e-af4b-bbd88ab4d909",
+            "go": "3c098818-9b67-45bd-960a-ac4a6f6e60e3",
+            "component_type": "Wind"
+          }
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "b746cd62-727a-4913-ac43-9734beba5e37",
+          "AngularDamping": 0.1,
+          "Gravity": true,
+          "LinearDamping": 2,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "GunController",
+          "__guid": "c9bb5a18-3964-40ae-8097-d070201516bb",
+          "Force": 400,
+          "GunSources": []
+        },
+        {
+          "__type": "FloatingPoint",
+          "__guid": "b7e78028-2ac5-43c2-acad-a812f1a479d1",
+          "DensityModifier": 2,
+          "DrawSamplingDebug": false,
+          "Rigidbody": {
+            "_type": "component",
+            "component_id": "b746cd62-727a-4913-ac43-9734beba5e37",
+            "go": "506bac16-f66b-4447-b679-f81142967c7e",
+            "component_type": "Rigidbody"
+          },
+          "SampleModifier": 0.5,
+          "SamplePoints": 1000,
+          "UseAverageSamplePosition": false,
+          "Waves": {
+            "_type": "component",
+            "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
+            "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
+            "component_type": "Waves"
+          }
+        },
+        {
+          "__type": "ModelCollider",
+          "__guid": "33271596-01c9-4825-815d-0eddff194cee",
+          "IsTrigger": false,
+          "Model": "models/ships/sloop/sloop.vmdl",
+          "Static": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "cad3c711-ce4a-4946-bd32-9645c8cc854e",
+          "Name": "UI",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "ScreenPanel",
+              "__guid": "cf08515f-d741-4e28-ae21-89e40bf97b50",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "ShipVitals",
+              "__guid": "8293acc3-bf42-4d4e-a756-1292a62a785e",
+              "Ship": {
+                "_type": "component",
+                "component_id": "b1ba876a-91f5-4974-b97d-c3558782a6c0",
+                "go": "506bac16-f66b-4447-b679-f81142967c7e",
+                "component_type": "ShipController"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "85ba59bb-d5e3-4bba-bd48-d8a4659035b5",
+          "Name": "Mast",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__guid": "199c46bd-3434-4d31-bf43-20f2d7b6e90c",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/ships/sloop/sloop_mast.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "FloatingPoint",
+              "__guid": "aa9a2e3b-300b-42c6-a683-7122876a711b",
+              "__enabled": false,
+              "DensityModifier": 3,
+              "DrawSamplingDebug": false,
+              "Rigidbody": {
+                "_type": "component",
+                "component_id": "9e9a837c-d9f7-4e7d-9e99-37d0f8ea04b7",
+                "go": "85ba59bb-d5e3-4bba-bd48-d8a4659035b5",
+                "component_type": "Rigidbody"
+              },
+              "SampleModifier": 1,
+              "SamplePoints": 500,
+              "UseAverageSamplePosition": true,
+              "Waves": {
+                "_type": "component",
+                "component_id": "c37fd1aa-a4a8-4c3c-868a-b85df39285f0",
+                "go": "5e7b7491-d20b-4e18-a63a-bc88058748ae",
+                "component_type": "Waves"
+              }
+            },
+            {
+              "__type": "Rigidbody",
+              "__guid": "9e9a837c-d9f7-4e7d-9e99-37d0f8ea04b7",
+              "__enabled": false,
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            },
+            {
+              "__type": "ModelCollider",
+              "__guid": "aa63b046-ab10-4ead-a86e-388cb949f7e0",
+              "IsTrigger": false,
+              "Model": "models/ships/sloop/sloop_mast.vmdl",
+              "Static": false
             }
           ]
         }
@@ -1021,7 +1112,7 @@
   },
   "Title": "default",
   "Description": "",
-  "LastSaved": "2024-03-27T23:54:35.7351389-03:00",
+  "LastSaved": "2024-04-01T13:40:49.8134958-03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [
