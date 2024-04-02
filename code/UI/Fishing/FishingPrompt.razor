@@ -4,6 +4,11 @@
 @using Pirate.World
 @inherits PanelComponent
 
+@if (Ship is null)
+{
+    return;
+}
+
 <root>
     <div class="prompt @ShouldShowPrompt()">
         <i>phishing</i>
@@ -23,8 +28,7 @@
     [Property]
     public required FishingSpot FishingSpot { get; set; }
 
-    [Property]
-    public required ShipController Ship { get; set; }
+    public ShipController? Ship => ShipBuilder.Instance.PlayerShip;
 
     private TimeUntil TimeUntilTextAppears { get; set; }
 

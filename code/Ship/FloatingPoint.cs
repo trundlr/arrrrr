@@ -4,7 +4,6 @@ namespace Pirate.Ship;
 public sealed class FloatingPoint : Component
 {
 	[Property] public required Rigidbody Rigidbody { get; set; }
-	[Property] public required Waves Waves { get; set; }
 	[Property] public float DensityModifier { get; set; } = 1f;
 	[Property] public float SampleModifier { get; set; } = 1f;
 	[Property] public int SamplePoints { get; set; }
@@ -37,7 +36,7 @@ public sealed class FloatingPoint : Component
 		for ( var i = 0; i < RandomPoints.Length; i++ )
 		{
 			var worldPoint = Transform.World.PointToWorld( RandomPoints[i] );
-			var waveHeight = Waves.GetWaveHeight( worldPoint.x );
+			var waveHeight = Waves.Instance.GetWaveHeight( worldPoint.x );
 			if ( worldPoint.z < waveHeight )
 				submergedPoints.Add( worldPoint );
 		}

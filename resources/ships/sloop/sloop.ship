@@ -1,0 +1,19 @@
+{
+  "Name": "Sloop",
+  "Description": "A sturdy vessel for a small crew.",
+  "MovementSpeed": 80,
+  "TurningSpeed": 3,
+  "LinearDamping": 0.65,
+  "AngularDamping": 0.3,
+  "DensityModifier": 2,
+  "SampleModifier": 0.5,
+  "HullPath": "models/ships/sloop/sloop.vmdl",
+  "Hull": "models/ships/sloop/sloop.vmdl",
+  "Attachments": [
+    "resources/ships/sloop/sloop_mast.shippart"
+  ],
+  "GunPower": 400,
+  "ResourceVersion": 0,
+  "__version": 0,
+  "__references": []
+}

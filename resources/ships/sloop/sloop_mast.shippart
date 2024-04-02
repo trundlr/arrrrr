@@ -1,0 +1,9 @@
+{
+  "Model": "models/ships/sloop/sloop_mast.vmdl",
+  "Position": "0,0,0",
+  "Rotation": "0,0,0,0",
+  "ShowByDefault": true,
+  "ResourceVersion": 0,
+  "__version": 0,
+  "__references": []
+}

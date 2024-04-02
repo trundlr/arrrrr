@@ -1,0 +1,121 @@
+{
+  "RootObject": {
+    "__guid": "506bac16-f66b-4447-b679-f81142967c7e",
+    "Name": "ship",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "__guid": "ad2a3703-10af-4a58-9554-c7c112834759",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/ships/sloop/sloop.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ShipController",
+        "__guid": "b1ba876a-91f5-4974-b97d-c3558782a6c0",
+        "FishingRodPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/ship/fishing_rod.prefab"
+        },
+        "Guns": {
+          "_type": "component",
+          "component_id": "c9bb5a18-3964-40ae-8097-d070201516bb",
+          "go": "506bac16-f66b-4447-b679-f81142967c7e",
+          "component_type": "GunController"
+        },
+        "Model": {
+          "_type": "component",
+          "component_id": "ad2a3703-10af-4a58-9554-c7c112834759",
+          "go": "506bac16-f66b-4447-b679-f81142967c7e",
+          "component_type": "ModelRenderer"
+        },
+        "PlayerControlled": true,
+        "Rigidbody": {
+          "_type": "component",
+          "component_id": "b746cd62-727a-4913-ac43-9734beba5e37",
+          "go": "506bac16-f66b-4447-b679-f81142967c7e",
+          "component_type": "Rigidbody"
+        },
+        "ShipSpeed": 120,
+        "TurningSpeed": 3
+      },
+      {
+        "__type": "Rigidbody",
+        "__guid": "b746cd62-727a-4913-ac43-9734beba5e37",
+        "AngularDamping": 0.3,
+        "Gravity": true,
+        "LinearDamping": 0.65,
+        "Locking": {},
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "GunController",
+        "__guid": "c9bb5a18-3964-40ae-8097-d070201516bb",
+        "Force": 400,
+        "GunSources": []
+      },
+      {
+        "__type": "FloatingPoint",
+        "__guid": "b7e78028-2ac5-43c2-acad-a812f1a479d1",
+        "DensityModifier": 2,
+        "DrawSamplingDebug": false,
+        "Rigidbody": {
+          "_type": "component",
+          "component_id": "b746cd62-727a-4913-ac43-9734beba5e37",
+          "go": "506bac16-f66b-4447-b679-f81142967c7e",
+          "component_type": "Rigidbody"
+        },
+        "SampleModifier": 0.5,
+        "SamplePoints": 1000,
+        "UseAverageSamplePosition": false
+      },
+      {
+        "__type": "ModelCollider",
+        "__guid": "33271596-01c9-4825-815d-0eddff194cee",
+        "IsTrigger": false,
+        "Model": "models/ships/sloop/sloop.vmdl",
+        "Static": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "cad3c711-ce4a-4946-bd32-9645c8cc854e",
+        "Name": "UI",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ScreenPanel",
+            "__guid": "cf08515f-d741-4e28-ae21-89e40bf97b50",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ZIndex": 100
+          },
+          {
+            "__type": "ShipVitals",
+            "__guid": "8293acc3-bf42-4d4e-a756-1292a62a785e",
+            "Ship": {
+              "_type": "component",
+              "component_id": "b1ba876a-91f5-4974-b97d-c3558782a6c0",
+              "go": "506bac16-f66b-4447-b679-f81142967c7e",
+              "component_type": "ShipController"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

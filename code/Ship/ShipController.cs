@@ -11,7 +11,6 @@ public sealed class ShipController : Component
 	[Property] public bool PlayerControlled { get; set; } = false;
 	[Property] public ModelRenderer? Model { get; set; }
 	[Property] public required Rigidbody Rigidbody { get; set; }
-	[Property] public required Wind Wind { get; set; }
 	[Property] public required GunController Guns { get; set; }
 	[Property] public GameObject? FishingRodPrefab { get; set; }
 
@@ -83,9 +82,9 @@ public sealed class ShipController : Component
 		var pitch = (MathF.Sin( Time.Now ) - 1f) * 3f;
 
 		var wishSpeed = GetWishSpeed();
-		var force = wishSpeed + Wind.WindForce;
+		var force = wishSpeed + Wind.Instance.WindForce;
 
-		var angle = Transform.Rotation.Forward.Normal.Angle( Wind.WindDirection );
+		var angle = Transform.Rotation.Forward.Normal.Angle( Wind.Instance.WindDirection );
 		force *= (90f / angle).Clamp( 0.8f, 1.5f );
 
 		if ( AnchorDropped )
@@ -182,7 +181,7 @@ public sealed class ShipController : Component
 			10f );
 
 		Gizmo.Draw.Color = Color.Cyan;
-		Gizmo.Draw.Arrow( Transform.Position + up, Transform.Position + new Vector3( Wind.WindDirection ) + up,
+		Gizmo.Draw.Arrow( Transform.Position + up, Transform.Position + new Vector3( Wind.Instance.WindDirection ) + up,
 			100f,
 			10f );
 	}
